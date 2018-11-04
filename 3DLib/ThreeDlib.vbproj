@@ -75,7 +75,7 @@
     <Compile Include="FigureCreator.vb" />
     <Compile Include="Figures\Bezier.vb" />
     <Compile Include="Service.vb" />
-    <Compile Include="Figures\IFigure.vb" />
+    <Compile Include="Figures\Figure.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

@@ -4,28 +4,19 @@ Imports OpenTK.Graphics.OpenGL
 
 Namespace ThreeDlib.Figures
     Public Class Pipe
-        Implements IFigure
+        Inherits Figure
 
         Const koefBend As Double = 2.5
         Dim vertexCount_ As Integer
         Dim isBorders_ As Boolean
-        Dim p1_ As Vector4
-        Dim p2_ As Vector4
-        Dim color_ As Color
-        Dim r_ As Double
-        Dim fi_ As Double
-        Dim basis_ As Vector3
+        
         Dim isOxBasis_ As Boolean
         Dim isOyBasis_ As Boolean
         Dim isOzBasis_ As Boolean
-        Dim vertexes1_() As Vector4
-        Dim vertexes2_() As Vector4
-        Dim vertexes1Real_() As Vector4
-        Dim vertexes2Real_() As Vector4
-        Dim isConnectedP1_ As Boolean
-        Dim isConnectedP2_ As Boolean
-        Dim isDrawn As Boolean = False
+       
+        #Region  "Props"
 
+        Dim p1_ As Vector4
         Public Property P1 As Vector4
             Get
                 Return p1_
@@ -34,6 +25,8 @@ Namespace ThreeDlib.Figures
                 p1_ = value
             End Set
         End Property
+
+        Dim p2_ As Vector4
         Public Property P2 As Vector4
             Get
                 Return p2_
@@ -42,17 +35,22 @@ Namespace ThreeDlib.Figures
                 p2_ = value
             End Set
         End Property
+
+        Dim isConnectedP1_ As Boolean
         Public ReadOnly Property IsConnectedP1 As Boolean
             Get
                 Return isConnectedP1_
             End Get
         End Property
+
+        Dim isConnectedP2_ As Boolean
         Public ReadOnly Property IsConnectedP2 As Boolean
             Get
                 Return isConnectedP2_
             End Get
         End Property
 
+        Dim r_ As Double
         Public Property R As Double
             Get
                 Return r_
@@ -61,6 +59,8 @@ Namespace ThreeDlib.Figures
                 r_ = value
             End Set
         End Property
+
+        Dim fi_ As Double
         Public Property Fi As Double
             Get
                 Return fi_
@@ -69,6 +69,8 @@ Namespace ThreeDlib.Figures
                 fi_ = value
             End Set
         End Property
+
+        Dim basis_ As Vector3
         Public Property Basis As Vector3
             Get
                 Return basis_
@@ -77,6 +79,8 @@ Namespace ThreeDlib.Figures
                 basis_ = value
             End Set
         End Property
+
+        Dim color_ As Color
         Public Property Color As Color
             Get
                 Return color_
@@ -85,6 +89,9 @@ Namespace ThreeDlib.Figures
                 color_ = value
             End Set
         End Property
+
+        Dim vertexes1_() As Vector4
+        Dim vertexes1Real_() As Vector4
         Public Property Vertexes1 As Vector4()
             Get
                 Return vertexes1Real_
@@ -93,6 +100,9 @@ Namespace ThreeDlib.Figures
                 vertexes1Real_ = value
             End Set
         End Property
+
+        Dim vertexes2_() As Vector4
+        Dim vertexes2Real_() As Vector4
         Public Property Vertexes2 As Vector4()
             Get
                 Return vertexes2Real_
@@ -117,14 +127,19 @@ Namespace ThreeDlib.Figures
             End Get
         End Property
 
+        #End Region
+
         Sub New(p1 As Vector4, p2 As Vector4)
             Me.P1 = p1
             Me.P2 = p2
         End Sub
 
-        Public Function IsValid() As Boolean
-            Return Not (P1.X <> P2.X And P1.Y <> P2.Y Or P1.X <> P2.X And P1.Z <> P2.Z Or P1.Y <> P2.Y And P1.Z <> P2.Z)
-        End Function
+        Public ReadOnly Property IsValid As Boolean
+            Get
+                Return Not (P1.X <> P2.X And P1.Y <> P2.Y Or P1.X <> P2.X And P1.Z <> P2.Z Or P1.Y <> P2.Y And P1.Z <> P2.Z)
+            End Get
+        End Property
+            
 
         Private Sub CalcVertexes()
             ReDim vertexes1_(vertexCount_ - 1)
@@ -178,7 +193,7 @@ Namespace ThreeDlib.Figures
             CalcVertexes()
         End Sub
 
-        Public Sub Draw() Implements IFigure.Draw
+        Public Overrides Sub Draw()
 
             GL.PushMatrix()
             GL.Translate(P1.X, P1.Y, P1.Z)
@@ -433,8 +448,6 @@ Namespace ThreeDlib.Figures
             Return New Vector4(result.X, result.Y, result.Z, 1)
 
         End Function
-
-
 
         Private Shared Function CycleIndex(ind As Int32, size As Int32, inc As Boolean)
             Dim resultInd As Int32 = ind
