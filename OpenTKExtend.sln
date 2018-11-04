@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2047
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ThreeDlib", "3DLib\ThreeDlib.vbproj", "{0C6DB5F4-C398-4866-9988-1E19F929B0D4}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Test3D", "3DTest\Test3D.vbproj", "{9A4EB5F2-30A2-484F-BC14-7C804E14187F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C6DB5F4-C398-4866-9988-1E19F929B0D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C6DB5F4-C398-4866-9988-1E19F929B0D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C6DB5F4-C398-4866-9988-1E19F929B0D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C6DB5F4-C398-4866-9988-1E19F929B0D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A4EB5F2-30A2-484F-BC14-7C804E14187F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A4EB5F2-30A2-484F-BC14-7C804E14187F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A4EB5F2-30A2-484F-BC14-7C804E14187F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A4EB5F2-30A2-484F-BC14-7C804E14187F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7DF5B58-D266-4D04-A94C-E4C6408A957E}
+	EndGlobalSection
+EndGlobal
