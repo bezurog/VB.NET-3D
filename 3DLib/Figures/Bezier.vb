@@ -10,10 +10,10 @@ Namespace ThreeDlib.Figures
         Dim vertexes_() As Vector4
         Dim vertexesCount_ As Integer
 
-        Public Property P1() As Vector4
-        Public Property P2() As Vector4
-        Public Property P3() As Vector4
-        Public Property P4() As Vector4
+        Friend Property P1() As Vector4
+        Friend Property P2() As Vector4
+        Friend Property P3() As Vector4
+        Friend Property P4() As Vector4
         Public Property Color() As Color
 
         Sub New(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, color As Color) 
@@ -22,7 +22,10 @@ Namespace ThreeDlib.Figures
             Me.P3 = p3
             Me.P4 = p4
             Me.Color = color
+            Me.isValid_ = Init()
+        End Sub
 
+        Protected Overrides Function Init() As Boolean 
             Dim t As Double = 0
             Dim h As Double = 0.01
             vertexesCount_ = 1 / h + 1
@@ -35,7 +38,9 @@ Namespace ThreeDlib.Figures
                 vertexes_(i).W = 1
                 t += h
             Next i
-        End Sub
+            Return True
+        End Function
+
         Public Overrides Sub Draw()
             GL.Begin(BeginMode.Points)
             GL.Color4(Me.Color)
