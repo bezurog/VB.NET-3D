@@ -25,6 +25,13 @@ Namespace ThreeDlib
             Return connector
         End Function
 
+        Public Shared Function CreateLine(p1 As Vector4, p2 As Vector4, lineWidth As Integer, isStipple As Boolean) As Line
+            Dim line As Line = New Line(p1, p2, lineWidth, isStipple)
+            If Not line.IsValid Then line = Nothing
+            Return line
+        End Function
+
+
 
     End Class
 End Namespace

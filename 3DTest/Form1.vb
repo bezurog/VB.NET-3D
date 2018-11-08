@@ -62,33 +62,33 @@ Public Class Form1
 
     Private Sub DrawFigure()
 
-        DrawLine(New Vector4(-15, -15, 150, 1), New Vector4(-15, -15, 10, 1), 2, False)
-        DrawLine(New Vector4(15, -15, 150, 1), New Vector4(15, -15, 10, 1), 2, False)
-        DrawLine(New Vector4(15, 15, 10, 1), New Vector4(15, 15, 150, 1), 2, False)
-        DrawLine(New Vector4(-15, 15, 10, 1), New Vector4(-15, 15, 150, 1), 2, False)
-        DrawLine(New Vector4(0, 0, 10, 1), New Vector4(0, 0, 155, 1), 5, False)
+        Dim line1 As Line = FigureCreator.CreateLine(New Vector4(-15, -15, 150, 1), New Vector4(-15, -15, 10, 1), 2, False)
+        line1.Draw()
+        Dim line2 As Line = FigureCreator.CreateLine(New Vector4(15, -15, 150, 1), New Vector4(15, -15, 10, 1), 2, False)
+        line2.Draw()
+        Dim line3 As Line = FigureCreator.CreateLine(New Vector4(15, 15, 10, 1), New Vector4(15, 15, 150, 1), 2, False)
+        line3.Draw()
+        Dim line4 As Line = FigureCreator.CreateLine(New Vector4(-15, 15, 10, 1), New Vector4(-15, 15, 150, 1), 2, False)
+        line4.Draw()
+        Dim line5 As Line = FigureCreator.CreateLine(New Vector4(0, 0, 10, 1), New Vector4(0, 0, 155, 1), 5, False)
+        line5.Draw()
 
         Dim pipe1 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 0, 155, 1), Color.Red, 20, 8, True)
-        'pipe1.Draw()
-        Dim pipe2 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, 90, 155, 1), Color.Blue, 20, 8, True)
-        'Dim connect12 As PipeConnector = FigureCreator.CreatePipeConnector(pipe1, pipe2, 15)
+        'Dim pipe2 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, 90, 155, 1), Color.Blue, 20, 8, True)
+        'pipe2.Draw()
 
         Dim pipe3 As Pipe = FigureCreator.CreatePipe(New Vector4(-40, 0, 80, 1), New Vector4(0, 0, 80, 1), Color.Green, 20, 8, True)
         pipe3.Draw() 
-        'Dim connect13 As PipeConnector = FigureCreator.CreatePipeConnector(pipe1, pipe3, 20)
         Dim pipe4 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, -120, 155, 1), Color.Magenta, 20, 8, True)
-        'pipe4.Draw()
-
 
         Dim connect14 As PipeConnector = FigureCreator.CreatePipeConnector(pipe1, pipe4, 30)
         connect14.Draw()
 
         
-
-
-
-        DrawLine(New Vector4(-40, -50, 10, 1), New Vector4(-40, 50, 10, 1), 1, True)
-        DrawLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), 1, True)
+        Dim line6 As Line = FigureCreator.CreateLine(New Vector4(-40, -50, 10, 1), New Vector4(-40, 50, 10, 1), 1, True)
+        line6.Draw()
+        Dim line7 As Line = FigureCreator.CreateLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), 1, True)
+        line7.Draw()
 
         'For i As Integer = 0 To 5
         '    DrawLine(New Vector4(-40 + i * 15 + 3, -40, 10, 1), New Vector4(-40 + i * 15 + 3, 40, 10, 1), 2, False)
@@ -158,25 +158,6 @@ Public Class Form1
         '         New Vector4(-50, 50, 0, 1),
         '         New Vector4(50, 50, 0, 1))
 
-    End Sub
-
-    Private Sub DrawLine(p1 As Vector4, p2 As Vector4, lineWidth As Integer, isStipple As Boolean)
-        GL.LineWidth(lineWidth)
-        If isStipple Then
-            GL.Enable(EnableCap.LineSmooth)
-            GL.Enable(EnableCap.LineStipple)
-            GL.LineStipple(2, 255)
-        End If
-        GL.Begin(BeginMode.Lines)
-        GL.Color4(Color.Black)
-        GL.Vertex4(p1)
-        GL.Vertex4(p2)
-        GL.End()
-        If isStipple Then
-            GL.Disable(EnableCap.LineSmooth)
-            GL.Disable(EnableCap.LineStipple)
-        End If
-        GL.LineWidth(1)
     End Sub
 
     Private Sub DrawRect(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, clr As Color, isBorders As Boolean, isFaces As Boolean)
