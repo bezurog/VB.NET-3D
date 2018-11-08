@@ -2,7 +2,15 @@
 
 
     Public MustInherit Class Figure
-        Protected Dim isDrawn As Boolean = False
+        Protected Dim isValid_ As Boolean = False
+
+        Public ReadOnly Property IsValid As Boolean 
+            Get
+                Return isValid_
+            End Get
+        End Property
+
+        Protected MustOverride Function Init() As Boolean
         Public MustOverride Sub Draw()
     End Class
 
