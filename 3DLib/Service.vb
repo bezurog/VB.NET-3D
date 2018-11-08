@@ -97,6 +97,16 @@ Namespace ThreeDlib
             Return True
         End Function
 
+        Public Shared Function CycleIndex(ind As Int32, size As Int32, inc As Boolean)
+            Dim resultInd As Int32 = ind
+            If inc Then
+                If resultInd = size - 1 Then resultInd = 0 Else resultInd = ind + 1
+            Else
+                If resultInd = 0 Then resultInd = size - 1 Else resultInd = ind - 1
+            End If
+            Return resultInd
+        End Function
+
     End Class
 
 End Namespace
