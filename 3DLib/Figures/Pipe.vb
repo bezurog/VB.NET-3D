@@ -14,7 +14,6 @@ Namespace ThreeDlib.Figures
 
         Private vertexes1_() As Vector4
         Private vertexes2_() As Vector4
-
         
         #Region  "Props"
 
