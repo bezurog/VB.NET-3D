@@ -69,22 +69,23 @@ Public Class Form1
         DrawLine(New Vector4(0, 0, 10, 1), New Vector4(0, 0, 155, 1), 5, False)
 
         Dim pipe1 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 0, 155, 1), Color.Red, 20, 8, True)
+        'pipe1.Draw()
         Dim pipe2 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, 90, 155, 1), Color.Blue, 20, 8, True)
-        'Pipe.Connect(pipe1, pipe2, 15)
+        'Dim connect12 As PipeConnector = FigureCreator.CreatePipeConnector(pipe1, pipe2, 15)
 
         Dim pipe3 As Pipe = FigureCreator.CreatePipe(New Vector4(-40, 0, 80, 1), New Vector4(0, 0, 80, 1), Color.Green, 20, 8, True)
-        'Pipe.Connect(pipe1, pipe3, 20)
+        pipe3.Draw() 
+        'Dim connect13 As PipeConnector = FigureCreator.CreatePipeConnector(pipe1, pipe3, 20)
         Dim pipe4 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, -120, 155, 1), Color.Magenta, 20, 8, True)
+        'pipe4.Draw()
 
 
+        Dim connect14 As PipeConnector = FigureCreator.CreatePipeConnector(pipe1, pipe4, 30)
+        connect14.Draw()
 
-        Pipe.Connect(pipe1, pipe4, 100)
-        pipe3.Draw()
+        
 
 
-
-
-        'Pipe.Connect(pipe1, pipe3, 3)
 
         DrawLine(New Vector4(-40, -50, 10, 1), New Vector4(-40, 50, 10, 1), 1, True)
         DrawLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), 1, True)
