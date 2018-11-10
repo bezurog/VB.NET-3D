@@ -103,7 +103,7 @@ Public Class Form1
                                                     New Vector4(-15, 15, 10, 1), Color.Blue, True, True)
         rect3.Draw()
 
-        DrawParallel(New Vector4(-25, -25, 40, 1),
+        Dim par1 As Parallel = FigureCreator.CreateParallel(New Vector4(-25, -25, 40, 1),
                  New Vector4(25, -25, 40, 1),
                  New Vector4(-25, 25, 40, 1),
                  New Vector4(25, 25, 40, 1),
@@ -111,9 +111,11 @@ Public Class Form1
                  New Vector4(25, 25, 150, 1),
                  New Vector4(-25, -25, 150, 1),
                  New Vector4(25, -25, 150, 1),
-                 New Color4(0.83F, 0.83F, 0.83F, 0.0F), True, False)
+                 Color.HotPink, True, False)
+        par1.Draw()
 
-        DrawParallel(New Vector4(-40, -40, 10, 1),
+
+        Dim par2 As Parallel = FigureCreator.CreateParallel(New Vector4(-40, -40, 10, 1),
                  New Vector4(40, -40, 10, 1),
                  New Vector4(-40, 40, 10, 1),
                  New Vector4(40, 40, 10, 1),
@@ -121,9 +123,10 @@ Public Class Form1
                  New Vector4(40, 40, 40, 1),
                  New Vector4(-40, -40, 40, 1),
                  New Vector4(40, -40, 40, 1),
-                 New Color4(0.83F, 0.83F, 0.83F, 0.0F), True, True)
+                 Color.DarkGreen, True, True)
+        par2.Draw()
 
-        DrawParallel(New Vector4(-50, -50, 0, 1),
+        Dim par3 As Parallel = FigureCreator.CreateParallel(New Vector4(-50, -50, 0, 1),
                  New Vector4(50, -50, 0, 1),
                  New Vector4(-50, 50, 0, 1),
                  New Vector4(50, 50, 0, 1),
@@ -131,7 +134,8 @@ Public Class Form1
                  New Vector4(50, 50, 10, 1),
                  New Vector4(-50, -50, 10, 1),
                  New Vector4(50, -50, 10, 1),
-                 New Color4(0.83F, 0.83F, 0.83F, 1.0F), True, True)
+                 Color.IndianRed, False, True)
+        par3.Draw()
 
         'DrawTexture("bitmap.bmp", New Vector4(-50, -50, 0, 1),
         '         New Vector4(50, -50, 0, 1),
@@ -174,87 +178,6 @@ Public Class Form1
     '    GL.Disable(EnableCap.Texture2D)
 
     'End Sub
-
-
-    Private Sub DrawParallel(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, p5 As Vector4, p6 As Vector4,
-                             p7 As Vector4, p8 As Vector4, clr1 As Color, isBorders As Boolean, isFaces As Boolean)
-        GL.Enable(EnableCap.Blend)
-        GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha)
-
-        If isBorders Then
-            GL.Enable(EnableCap.LineSmooth)
-
-            GL.Begin(BeginMode.LineStrip)
-            GL.Color4(Color.Black)
-            GL.Vertex4(p1)
-            GL.Vertex4(p2)
-            GL.Vertex4(p4)
-            GL.Vertex4(p3)
-            GL.Vertex4(p1)
-            GL.Vertex4(p7)
-            GL.Vertex4(p8)
-            GL.Vertex4(p6)
-            GL.Vertex4(p5)
-            GL.Vertex4(p7)
-            GL.End()
-
-            GL.Begin(BeginMode.LineLoop)
-            GL.Vertex4(p5)
-            GL.Vertex4(p6)
-            GL.Vertex4(p8)
-            GL.Vertex4(p7)
-            GL.End()
-
-            GL.Begin(BeginMode.LineLoop)
-            GL.Vertex4(p1)
-            GL.Vertex4(p2)
-            GL.Vertex4(p4)
-            GL.Vertex4(p3)
-            GL.End()
-
-            GL.Begin(BeginMode.Lines)
-            GL.Vertex4(p1)
-            GL.Vertex4(p7)
-            GL.Vertex4(p2)
-            GL.Vertex4(p8)
-            GL.Vertex4(p3)
-            GL.Vertex4(p5)
-            GL.Vertex4(p4)
-            GL.Vertex4(p6)
-            GL.End()
-        End If
-
-        If isFaces Then
-
-
-            GL.Vertex4(p1)
-            GL.Vertex4(p2)
-            GL.Vertex4(p3)
-            GL.Vertex4(p4)
-            GL.Vertex4(p5)
-            GL.Vertex4(p6)
-            GL.Vertex4(p7)
-            GL.Vertex4(p8)
-            GL.Vertex4(p1)
-            GL.Vertex4(p2)
-            GL.End()
-
-            GL.Begin(BeginMode.Quads)
-            'GL.Color3(clr2)
-            GL.Vertex4(p2)
-            GL.Vertex4(p4)
-            GL.Vertex4(p6)
-            GL.Vertex4(p8)
-            GL.Vertex4(p1)
-            GL.Vertex4(p3)
-            GL.Vertex4(p5)
-            GL.Vertex4(p7)
-            GL.End()
-
-        End If
-
-        GL.Disable(EnableCap.Blend)
-    End Sub
 
     Private Sub GlControl1_MouseDown(sender As Object, e As MouseEventArgs) Handles GlControl1.MouseDown
         If e.Button = MouseButtons.Left Then

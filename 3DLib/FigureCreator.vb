@@ -32,12 +32,18 @@ Namespace ThreeDlib
         End Function
 
         Public Shared Function CreateRect(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, clr As Color, isBorders As Boolean, isFaces As Boolean) As Rect
-            Dim line As Rect = New Rect(p1, p2, p3, p4, clr, isBorders, isFaces)
-            If Not line.IsValid Then line = Nothing
-            Return line
+            Dim rect As Rect = New Rect(p1, p2, p3, p4, clr, isBorders, isFaces)
+            If Not rect.IsValid Then rect = Nothing
+            Return rect
         End Function
 
+        Public Shared Function CreateParallel(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, 
+               p5 As Vector4, p6 As Vector4, p7 As Vector4, p8 As Vector4, clr As Color, isBorders As Boolean, isFaces As Boolean) As Parallel 
 
+            Dim parallel As Parallel = New Parallel(p1, p2, p3, p4, p5, p6, p7, p8, clr, isBorders, isFaces)
+            If Not parallel.IsValid Then parallel = Nothing
+            Return parallel
+        End Function
 
     End Class
 End Namespace

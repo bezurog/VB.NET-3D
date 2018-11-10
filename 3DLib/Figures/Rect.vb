@@ -57,12 +57,12 @@ Namespace ThreeDlib.Figures
 
         Public ReadOnly Property IsValid As Boolean 
             Get
-                Return P1 <> P2 And P1 <> P3 And P1 <> P4 And P2 <> P3 And P2 <> P4 And P3 <> P4
+                Return isValid_
             End Get
         End Property
 
         Protected Overrides Function Init() As Boolean
-             Return P1 <> P2 And P1 <> P3 And P1 <> P4 And P2 <> P3 And P2 <> P4 And P3 <> P4
+            Return P1 <> P2 And P1 <> P3 And P1 <> P4 And P2 <> P3 And P2 <> P4 And P3 <> P4
         End Function
     End Class
 
