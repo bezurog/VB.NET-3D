@@ -76,6 +76,7 @@
     <Compile Include="Figures\Bezier.vb" />
     <Compile Include="Figures\Line.vb" />
     <Compile Include="Figures\PipeConnector.vb" />
+    <Compile Include="Figures\Rect.vb" />
     <Compile Include="Service.vb" />
     <Compile Include="Figures\Figure.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

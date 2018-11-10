@@ -31,6 +31,13 @@ Namespace ThreeDlib
             Return line
         End Function
 
+        Public Shared Function CreateRect(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, clr As Color, isBorders As Boolean, isFaces As Boolean) As Rect
+            Dim line As Rect = New Rect(p1, p2, p3, p4, clr, isBorders, isFaces)
+            If Not line.IsValid Then line = Nothing
+            Return line
+        End Function
+
+
 
     End Class
 End Namespace

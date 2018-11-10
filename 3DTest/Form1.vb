@@ -90,38 +90,18 @@ Public Class Form1
         Dim line7 As Line = FigureCreator.CreateLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), 1, True)
         line7.Draw()
 
-        'For i As Integer = 0 To 5
-        '    DrawLine(New Vector4(-40 + i * 15 + 3, -40, 10, 1), New Vector4(-40 + i * 15 + 3, 40, 10, 1), 2, False)
-        '    DrawLine(New Vector4(-40, -40 + i * 15 + 3, 10, 1), New Vector4(40, -40 + i * 15 + 3, 10, 1), 2, False)
-        'Next
+        Dim rect1 As Rect = FigureCreator.CreateRect(New Vector4(-15, -15, 150, 1), New Vector4(15, -15, 150, 1), New Vector4(15, 15, 150, 1), 
+                                                     New Vector4(-15, 15, 150, 1), Color.Blue, True, False)
+        rect1.Draw()
+            
 
-        'For i As Integer = 0 To 5
-        '    DrawLine(New Vector4(-40 + i * 15 + 3, -40, 40, 1), New Vector4(-40 + i * 15 + 3, 40, 40, 1), 2, False)
-        '    DrawLine(New Vector4(-40, -40 + i * 15 + 3, 40, 1), New Vector4(40, -40 + i * 15 + 3, 40, 1), 2, False)
-        'Next
+        Dim rect2 As Rect = FigureCreator.CreateRect(New Vector4(-15, -15, 90, 1), New Vector4(15, -15, 90, 1), New Vector4(15, 15, 90, 1),
+                                                     New Vector4(-15, 15, 90, 1), New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True)
+        rect2.Draw()
 
-        'DrawBezier(New Vector4(0, 0, 155, 1), New Vector4(-5, -5, 165, 1), New Vector4(-10, -10, 150, 1), New Vector4(-15, -15, 150, 1))
-        'DrawBezier(New Vector4(0, 0, 155, 1), New Vector4(5, -5, 165, 1), New Vector4(10, -10, 150, 1), New Vector4(15, -15, 150, 1))
-        'DrawBezier(New Vector4(0, 0, 155, 1), New Vector4(5, 5, 165, 1), New Vector4(10, 10, 150, 1), New Vector4(15, 15, 150, 1))
-        'DrawBezier(New Vector4(0, 0, 155, 1), New Vector4(-5, 5, 165, 1), New Vector4(-10, 10, 150, 1), New Vector4(-15, 15, 150, 1))
-
-        DrawRect(New Vector4(-15, -15, 150, 1),
-                 New Vector4(15, -15, 150, 1),
-                 New Vector4(15, 15, 150, 1),
-                 New Vector4(-15, 15, 150, 1),
-                 New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, False)
-
-        DrawRect(New Vector4(-15, -15, 90, 1),
-                New Vector4(15, -15, 90, 1),
-                New Vector4(15, 15, 90, 1),
-                New Vector4(-15, 15, 90, 1),
-                New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, False)
-
-        DrawRect(New Vector4(-15, -15, 10, 1),
-                New Vector4(15, -15, 10, 1),
-                New Vector4(15, 15, 10, 1),
-                New Vector4(-15, 15, 10, 1),
-                New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, False)
+        Dim rect3 As Rect = FigureCreator.CreateRect(New Vector4(-15, -15, 10, 1), New Vector4(15, -15, 10, 1), New Vector4(15, 15, 10, 1),
+                                                    New Vector4(-15, 15, 10, 1), Color.Blue, True, True)
+        rect3.Draw()
 
         DrawParallel(New Vector4(-25, -25, 40, 1),
                  New Vector4(25, -25, 40, 1),
@@ -158,33 +138,6 @@ Public Class Form1
         '         New Vector4(-50, 50, 0, 1),
         '         New Vector4(50, 50, 0, 1))
 
-    End Sub
-
-    Private Sub DrawRect(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, clr As Color, isBorders As Boolean, isFaces As Boolean)
-        GL.Enable(EnableCap.Blend)
-        GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha)
-
-        If isBorders Then
-            GL.Begin(BeginMode.LineLoop)
-            GL.Color4(Color.Black)
-            GL.Vertex4(p1)
-            GL.Vertex4(p2)
-            GL.Vertex4(p3)
-            GL.Vertex4(p4)
-            GL.End()
-        End If
-
-        If isFaces Then
-            GL.Begin(BeginMode.Quads)
-            GL.Color4(clr)
-            GL.Vertex4(p1)
-            GL.Vertex4(p2)
-            GL.Vertex4(p3)
-            GL.Vertex4(p4)
-            GL.End()
-        End If
-
-        GL.Disable(EnableCap.Blend)
     End Sub
 
     'Public Sub LoadTexture(bmp As Bitmap)
