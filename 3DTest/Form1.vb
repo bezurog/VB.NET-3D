@@ -22,8 +22,62 @@ Public Class Form1
     Dim dxy As Integer = 0
     Dim dz As Integer = 0
 
+    Dim figures As List(Of Figure)
+
     Private Sub GlControl1_Load(sender As Object, e As EventArgs) Handles GlControl1.Load
         GL.ClearColor(Color.DarkGray)
+        CreateFigures()
+    End Sub
+
+    Private Sub CreateFigures()
+        figures = New List(Of Figure)
+        figures.Add(FigureCreator.CreateLine(New Vector4(-15, -15, 150, 1), New Vector4(-15, -15, 10, 1), 2, False))
+        figures.Add(FigureCreator.CreateLine(New Vector4(15, -15, 150, 1), New Vector4(15, -15, 10, 1), 2, False))
+        figures.Add(FigureCreator.CreateLine(New Vector4(15, 15, 10, 1), New Vector4(15, 15, 150, 1), 2, False))
+        figures.Add(FigureCreator.CreateLine(New Vector4(-15, 15, 10, 1), New Vector4(-15, 15, 150, 1), 2, False))
+        figures.Add(FigureCreator.CreateLine(New Vector4(0, 0, 10, 1), New Vector4(0, 0, 155, 1), 5, False))
+        figures.Add(FigureCreator.CreatePipe(New Vector4(-40, 0, 80, 1), New Vector4(0, 0, 80, 1), Color.Green, 20, 8, True))
+        figures.Add(FigureCreator.CreatePipeConnector(FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 0, 155, 1), Color.Red, 5, 8, False), 
+                                                      FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, -120, 155, 1), Color.Magenta, 5, 8, False),
+                                                      30))
+        figures.Add(FigureCreator.CreateLine(New Vector4(-40, -50, 10, 1), New Vector4(-40, 50, 10, 1), 1, True))
+        figures.Add(FigureCreator.CreateLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), 1, True))
+
+        figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 150, 1), New Vector4(15, -15, 150, 1), New Vector4(15, 15, 150, 1), 
+                                                     New Vector4(-15, 15, 150, 1), Color.Blue, True, False))
+        figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 90, 1), New Vector4(15, -15, 90, 1), New Vector4(15, 15, 90, 1),
+                                                     New Vector4(-15, 15, 90, 1), New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True))
+        figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 90, 1), New Vector4(15, -15, 90, 1), New Vector4(15, 15, 90, 1),
+                                                     New Vector4(-15, 15, 90, 1), New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True))
+        figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 10, 1), New Vector4(15, -15, 10, 1), New Vector4(15, 15, 10, 1),
+                                                    New Vector4(-15, 15, 10, 1), Color.Blue, True, True))
+        figures.Add(FigureCreator.CreateParallel(New Vector4(-25, -25, 40, 1),
+                 New Vector4(25, -25, 40, 1),
+                 New Vector4(-25, 25, 40, 1),
+                 New Vector4(25, 25, 40, 1),
+                 New Vector4(-25, 25, 150, 1),
+                 New Vector4(25, 25, 150, 1),
+                 New Vector4(-25, -25, 150, 1),
+                 New Vector4(25, -25, 150, 1),
+                 Color.HotPink, True, False))
+        figures.Add(FigureCreator.CreateParallel(New Vector4(-40, -40, 10, 1),
+                 New Vector4(40, -40, 10, 1),
+                 New Vector4(-40, 40, 10, 1),
+                 New Vector4(40, 40, 10, 1),
+                 New Vector4(-40, 40, 40, 1),
+                 New Vector4(40, 40, 40, 1),
+                 New Vector4(-40, -40, 40, 1),
+                 New Vector4(40, -40, 40, 1),
+                 Color.DarkGreen, True, True))
+        figures.Add(FigureCreator.CreateParallel(New Vector4(-50, -50, 0, 1),
+                 New Vector4(50, -50, 0, 1),
+                 New Vector4(-50, 50, 0, 1),
+                 New Vector4(50, 50, 0, 1),
+                 New Vector4(-50, 50, 10, 1),
+                 New Vector4(50, 50, 10, 1),
+                 New Vector4(-50, -50, 10, 1),
+                 New Vector4(50, -50, 10, 1),
+                 Color.IndianRed, False, True))
     End Sub
 
     Private Sub GlControl1_Paint(sender As Object, e As PaintEventArgs) Handles GlControl1.Paint
@@ -61,82 +115,10 @@ Public Class Form1
     End Sub
 
     Private Sub DrawFigure()
-
-        Dim line1 As Line = FigureCreator.CreateLine(New Vector4(-15, -15, 150, 1), New Vector4(-15, -15, 10, 1), 2, False)
-        line1.Draw()
-        Dim line2 As Line = FigureCreator.CreateLine(New Vector4(15, -15, 150, 1), New Vector4(15, -15, 10, 1), 2, False)
-        line2.Draw()
-        Dim line3 As Line = FigureCreator.CreateLine(New Vector4(15, 15, 10, 1), New Vector4(15, 15, 150, 1), 2, False)
-        line3.Draw()
-        Dim line4 As Line = FigureCreator.CreateLine(New Vector4(-15, 15, 10, 1), New Vector4(-15, 15, 150, 1), 2, False)
-        line4.Draw()
-        Dim line5 As Line = FigureCreator.CreateLine(New Vector4(0, 0, 10, 1), New Vector4(0, 0, 155, 1), 5, False)
-        line5.Draw()
-
-        Dim pipe1 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 0, 155, 1), Color.Red, 20, 8, True)
-        'Dim pipe2 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, 90, 155, 1), Color.Blue, 20, 8, True)
-        'pipe2.Draw()
-
-        Dim pipe3 As Pipe = FigureCreator.CreatePipe(New Vector4(-40, 0, 80, 1), New Vector4(0, 0, 80, 1), Color.Green, 20, 8, True)
-        pipe3.Draw() 
-        Dim pipe4 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, -120, 155, 1), Color.Magenta, 20, 8, True)
-
-        Dim connect14 As PipeConnector = FigureCreator.CreatePipeConnector(pipe1, pipe4, 30)
-        connect14.Draw()
-
-        
-        Dim line6 As Line = FigureCreator.CreateLine(New Vector4(-40, -50, 10, 1), New Vector4(-40, 50, 10, 1), 1, True)
-        line6.Draw()
-        Dim line7 As Line = FigureCreator.CreateLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), 1, True)
-        line7.Draw()
-
-        Dim rect1 As Rect = FigureCreator.CreateRect(New Vector4(-15, -15, 150, 1), New Vector4(15, -15, 150, 1), New Vector4(15, 15, 150, 1), 
-                                                     New Vector4(-15, 15, 150, 1), Color.Blue, True, False)
-        rect1.Draw()
+        For Each f In figures
+            if f IsNot Nothing Then f.Draw()
+        Next
             
-
-        Dim rect2 As Rect = FigureCreator.CreateRect(New Vector4(-15, -15, 90, 1), New Vector4(15, -15, 90, 1), New Vector4(15, 15, 90, 1),
-                                                     New Vector4(-15, 15, 90, 1), New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True)
-        rect2.Draw()
-
-        Dim rect3 As Rect = FigureCreator.CreateRect(New Vector4(-15, -15, 10, 1), New Vector4(15, -15, 10, 1), New Vector4(15, 15, 10, 1),
-                                                    New Vector4(-15, 15, 10, 1), Color.Blue, True, True)
-        rect3.Draw()
-
-        Dim par1 As Parallel = FigureCreator.CreateParallel(New Vector4(-25, -25, 40, 1),
-                 New Vector4(25, -25, 40, 1),
-                 New Vector4(-25, 25, 40, 1),
-                 New Vector4(25, 25, 40, 1),
-                 New Vector4(-25, 25, 150, 1),
-                 New Vector4(25, 25, 150, 1),
-                 New Vector4(-25, -25, 150, 1),
-                 New Vector4(25, -25, 150, 1),
-                 Color.HotPink, True, False)
-        par1.Draw()
-
-
-        Dim par2 As Parallel = FigureCreator.CreateParallel(New Vector4(-40, -40, 10, 1),
-                 New Vector4(40, -40, 10, 1),
-                 New Vector4(-40, 40, 10, 1),
-                 New Vector4(40, 40, 10, 1),
-                 New Vector4(-40, 40, 40, 1),
-                 New Vector4(40, 40, 40, 1),
-                 New Vector4(-40, -40, 40, 1),
-                 New Vector4(40, -40, 40, 1),
-                 Color.DarkGreen, True, True)
-        par2.Draw()
-
-        Dim par3 As Parallel = FigureCreator.CreateParallel(New Vector4(-50, -50, 0, 1),
-                 New Vector4(50, -50, 0, 1),
-                 New Vector4(-50, 50, 0, 1),
-                 New Vector4(50, 50, 0, 1),
-                 New Vector4(-50, 50, 10, 1),
-                 New Vector4(50, 50, 10, 1),
-                 New Vector4(-50, -50, 10, 1),
-                 New Vector4(50, -50, 10, 1),
-                 Color.IndianRed, False, True)
-        par3.Draw()
-
         'DrawTexture("bitmap.bmp", New Vector4(-50, -50, 0, 1),
         '         New Vector4(50, -50, 0, 1),
         '         New Vector4(-50, 50, 0, 1),
