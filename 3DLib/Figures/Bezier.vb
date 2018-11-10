@@ -42,6 +42,8 @@ Namespace ThreeDlib.Figures
         End Function
 
         Public Overrides Sub Draw()
+            If Not IsEnable Then Return
+
             GL.Begin(BeginMode.Points)
             GL.Color4(Me.Color)
             For i = 0 To vertexesCount_ - 1

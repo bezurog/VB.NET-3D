@@ -22,6 +22,8 @@ Namespace ThreeDlib.Figures
         End Sub
 
         Public Overrides Sub Draw()
+            If Not IsEnable Then Return
+
             GL.LineWidth(LineWidth)
             If IsStipple Then
                 GL.Enable(EnableCap.LineSmooth)

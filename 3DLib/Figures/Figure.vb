@@ -3,6 +3,7 @@
 
     Public MustInherit Class Figure
         Protected Dim isValid_ As Boolean = False
+        Public Property IsEnable() As Boolean = True
 
         Public ReadOnly Property IsValid As Boolean 
             Get

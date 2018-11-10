@@ -29,6 +29,8 @@ Namespace ThreeDlib.Figures
         End Sub
 
         Public Overrides Sub Draw()
+            If Not IsEnable Then Return
+
             GL.Enable(EnableCap.Blend)
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha)
 

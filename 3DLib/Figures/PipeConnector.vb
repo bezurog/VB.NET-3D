@@ -89,7 +89,6 @@ Namespace ThreeDlib.Figures
             If endCenterPoint = pipe2.P1 And pipe2.IsConnectedP1 Then Return False
             If endCenterPoint = pipe2.P2 And pipe2.IsConnectedP2 Then Return False
 
-            
             Dim len1 As Double = (endCenterPoint - beginCenterPoint).Length
             Dim minLen As Double = (vertexes1(0) - vertexes2(0)).Length 'Service.Length(vertexes1(0), vertexes2(0))
             Dim startIndex As Int32 = 0
@@ -174,7 +173,7 @@ Namespace ThreeDlib.Figures
         End Function
 
         Public Overrides Sub Draw()
-
+            If Not IsEnable Then Return
 
             For i = 0 To vertexesCount_
                 'GL.Color4(Color.FromArgb(shift * i, shift * i, shift * i))

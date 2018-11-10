@@ -199,6 +199,7 @@ Namespace ThreeDlib.Figures
         End Function
 
         Public Overrides Sub Draw()
+            If Not IsEnable Then Return
 
             GL.PushMatrix()
             GL.Translate(P1.X, P1.Y, P1.Z)
