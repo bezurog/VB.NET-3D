@@ -155,7 +155,6 @@ Namespace ThreeDlib.Figures
                     r = Math.Sqrt(tmp.X * tmp.X + tmp.Y * tmp.Y)
                 End If
 
-
                 curvePoints(i) = Service.GetArc(centerCurve, vertexes1(startIndex), vertexes2(endIndex), normal, r)
                 startIndex = Service.CycleIndex(startIndex, vertexes1.Count(), True)
                 endIndex = Service.CycleIndex(endIndex, vertexes2.Count(), isInc)

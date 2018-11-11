@@ -54,6 +54,13 @@ Namespace ThreeDlib
             Dim startFi As Double = If(fi1 < fi2, fi1, fi2)
             Dim finishFi As Double = If(fi1 > fi2, fi1, fi2)
 
+            If finishFi - startFi > Math.PI Then 
+                startFi = startFi + 2 * Math.PI
+                Dim buf As Double = startFi
+                startFi = finishFi 
+                finishFi = buf
+            End If
+
             Dim x, y As Double
             Dim h As Double = 0.05
             Dim fi = startFi
