@@ -62,9 +62,9 @@ Namespace ThreeDlib
             End If
 
             Dim x, y As Double
-            Dim h As Double = 0.05
+            Dim h As Double = 0.1
             Dim fi = startFi
-            While fi <= finishFi
+            While fi <= finishFi + h
                 x = radius * Math.Cos(fi) + x0
                 y = radius * Math.Sin(fi) + y0
                 fi += h
@@ -76,6 +76,7 @@ Namespace ThreeDlib
                     list.Add(New Vector4(x, y, center.Z, 1))
                 End If
             End While
+
             Return list
         End Function
 
