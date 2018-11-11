@@ -16,17 +16,28 @@ Public Class Form1
     Dim isPress As Boolean = False
     Dim wheel As Integer = 0
     Const MAXWHEEL = 5
-    Dim X As Integer = 0
-    Dim Y As Integer = 0
+    
+    Dim camera As Vector3
+    Dim radiusCamera As Double = 300
 
+    Dim fi As Double = Math.PI / 4
+    Dim dFi As Double = 0
+
+    Dim teta As Double = Math.PI / 3
+    Dim dTeta As Double = 0
+
+    Dim X As Integer = 0
     Dim dxy As Integer = 0
+    Dim Y As Integer = 0
     Dim dz As Integer = 0
 
     Dim figures As List(Of Figure)
 
     Private Sub GlControl1_Load(sender As Object, e As EventArgs) Handles GlControl1.Load
         GL.ClearColor(Color.DarkGray)
+        camera = New Vector3(0,0,0)
         CreateFigures()
+        UpdateLabel()
     End Sub
 
     Private Sub CreateFigures()
@@ -47,8 +58,8 @@ Public Class Form1
         figures.Add(pipe3)
         figures.Add(pipe4)
         figures.Add(FigureCreator.CreatePipeConnector(pipe1, pipe2, 30))
-        figures.Add(FigureCreator.CreatePipeConnector(pipe2, pipe3, 30))
-        figures.Add(FigureCreator.CreatePipeConnector(pipe1, pipe4, 30))
+        figures.Add(FigureCreator.CreatePipeConnector(pipe2, pipe3, 10))
+        figures.Add(FigureCreator.CreatePipeConnector(pipe1, pipe4, 5))
         figures.Add(FigureCreator.CreateLine(New Vector4(-40, -50, 10, 1), New Vector4(-40, 50, 10, 1), 1, True))
         figures.Add(FigureCreator.CreateLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), 1, True))
 
@@ -86,7 +97,7 @@ Public Class Form1
                  New Vector4(50, 50, 10, 1),
                  New Vector4(-50, -50, 10, 1),
                  New Vector4(50, -50, 10, 1),
-                 Color.IndianRed, False, True))
+                 Color.IndianRed, True, False))
     End Sub
 
     Private Sub GlControl1_Paint(sender As Object, e As PaintEventArgs) Handles GlControl1.Paint
@@ -97,7 +108,12 @@ Public Class Form1
 
         'View settings
         Dim perspective As Matrix4 = Matrix4.CreatePerspectiveFieldOfView(Math.PI / 3, 1, 1, 1000) 'perspective
-        Dim lookAt As Matrix4 = Matrix4.LookAt(150, 150, 300, 0, 0, 0, 0, 0, 1)    'camera
+
+        camera.X = radiusCamera * Math.Sin(teta + dTeta) * Math.Cos(fi + dfi)
+        camera.Y = radiusCamera * Math.Sin(teta + dTeta) * Math.Sin(fi + dfi)
+        camera.Z = radiusCamera * Math.Cos(teta + dTeta)
+
+        Dim lookAt As Matrix4 = Matrix4.LookAt(camera.X, camera.Y, camera.Z, 0, 0, 0, 0, 0, 1)    'camera
         GL.MatrixMode(MatrixMode.Projection)
         'GL.LoadIdentity()
         GL.LoadMatrix(perspective)          'load perspective
@@ -110,15 +126,11 @@ Public Class Form1
         GL.Enable(EnableCap.DepthTest)
         GL.DepthFunc(DepthFunction.Less)
 
-        'Rotate
-        GL.Rotate(dxy / (GlControl1.Width * 0.005), 0, 0, 1)
-        GL.Rotate(dz / (GlControl1.Height * 0.005), 0, 1, 0)
-
         'Scale
         GL.Scale(1 + wheel * 0.1, 1 + wheel * 0.1, 1 + wheel * 0.1)
 
         DrawFigure()
-
+         
         GlControl1.SwapBuffers()  'Takes from the GL and puts into control
 
     End Sub
@@ -175,20 +187,33 @@ Public Class Form1
             isPress = True
             X = e.X
             Y = e.Y
+            dFi = 0
+            dTeta = 0
         End If
+        UpdateLabel()
     End Sub
 
     Private Sub GlControl1_MouseMove(sender As Object, e As MouseEventArgs) Handles GlControl1.MouseMove
         If isPress Then
+            
             dxy = e.X - X
             dz = e.Y - Y
+
+            dFi = dxy * 2 * Math.PI / GlControl1.Width
+            dTeta = dz * Math.PI / GlControl1.Height
+
             GlControl1.Invalidate()
-            'UpdateLabel()
+            UpdateLabel()
         End If
     End Sub
 
     Private Sub GlControl1_MouseUp(sender As Object, e As MouseEventArgs) Handles GlControl1.MouseUp
         isPress = False
+        dxy = 0
+        dz = 0
+        fi += dfi
+        teta += dTeta
+        UpdateLabel()
     End Sub
 
     Private Sub GlControl1_MouseWheel(sender As Object, e As MouseEventArgs) Handles GlControl1.MouseWheel
@@ -198,11 +223,16 @@ Public Class Form1
         GlControl1.Invalidate()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-        dxy = 0
-        dz = 0
-        GlControl1.Invalidate()
-        'UpdateLabel()
+
+    Private Sub UpdateLabel()
+        TextBox1.Text = dxy.ToString()
+        TextBox2.Text = dz.ToString()
+        tbCameraX.Text = camera.X.ToString()
+        tbCameraY.Text = camera.Y.ToString()
+        tbCameraZ.Text = camera.Z.ToString()
+
+
+
     End Sub
 
 End Class
