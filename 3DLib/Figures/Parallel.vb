@@ -40,7 +40,7 @@ Namespace ThreeDlib.Figures
             If Not IsEnable Then Return
 
             GL.Enable(EnableCap.Blend)
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha)
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha)
 
             If isBorders Then
                 GL.Enable(EnableCap.LineSmooth)
