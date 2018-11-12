@@ -18,7 +18,7 @@ Public Class Form1
     Const MAXWHEEL = 5
     
     Dim camera As Vector3
-    Dim radiusCamera As Double = 300
+    Dim radiusCamera As Double = 340
 
     Dim fi As Double = Math.PI / 4
     Dim dFi As Double = 0
