@@ -205,6 +205,9 @@ Namespace ThreeDlib.Figures
             GL.Translate(P1.X, P1.Y, P1.Z)
             'GL.Rotate(90, Basis)
 
+            GL.Enable(EnableCap.Blend)
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha)
+
             GL.Color4(Color)
 
             GL.Begin(BeginMode.Polygon)
@@ -248,6 +251,7 @@ Namespace ThreeDlib.Figures
             GL.Vertex4(vertexes2_(0))
             GL.End()
 
+            GL.Disable(EnableCap.Blend)
             GL.PopMatrix()
             GL.Color4(Color.Black)
 

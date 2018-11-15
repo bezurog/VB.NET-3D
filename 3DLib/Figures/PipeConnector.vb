@@ -174,6 +174,8 @@ Namespace ThreeDlib.Figures
         Public Overrides Sub Draw()
             If Not IsEnable Then Return
 
+            GL.Enable(EnableCap.Blend)
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha)
             For i = 0 To vertexesCount_
                 'GL.Color4(Color.FromArgb(shift * i, shift * i, shift * i))
                 GL.Begin(BeginMode.QuadStrip)
@@ -192,6 +194,7 @@ Namespace ThreeDlib.Figures
             Next
             GL.End()
 
+            GL.Disable(EnableCap.Blend)
             Pipe1.Draw()
             Pipe2.Draw()
         End Sub

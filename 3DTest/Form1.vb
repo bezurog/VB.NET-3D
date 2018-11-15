@@ -48,9 +48,9 @@ Public Class Form1
         figures.Add(FigureCreator.CreateLine(New Vector4(-15, 15, 10, 1), New Vector4(-15, 15, 150, 1), 2, False))
         figures.Add(FigureCreator.CreateLine(New Vector4(0, 0, 10, 1), New Vector4(0, 0, 155, 1), 5, False))
         figures.Add(FigureCreator.CreatePipe(New Vector4(-40, 0, 80, 1), New Vector4(0, 0, 80, 1), Color.Green, 20, 8, True))
-        Dim pipe1 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 0, 155, 1), Color.Red, 5, 8, False)
+        Dim pipe1 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 0, 155, 1), New Color4(0.2f, 0.8f, 0.5f, 0.3f), 5, 8, False)
         Dim pipe2 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, -120, 155, 1), Color.Magenta, 5, 8, False)
-        Dim pipe3 As Pipe = FigureCreator.CreatePipe(New Vector4(80, -120, 155, 1), New Vector4(0, -120, 155, 1), Color.Red, 5, 8, False)
+        Dim pipe3 As Pipe = FigureCreator.CreatePipe(New Vector4(80, -120, 155, 1), New Vector4(0, -120, 155, 1), New Color4(1f, 0.5f, 0.5f, 0.5f), 5, 8, False)
         Dim pipe4 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 100, 0, 1), Color.Gray, 5, 8, False)
 
         figures.Add(pipe1)
