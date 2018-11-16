@@ -241,3 +241,5 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /https---github.com-bezurog-OpenTKExtend/
+/.nuget
+/lib/net40
