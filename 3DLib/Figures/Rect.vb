@@ -15,9 +15,11 @@ Namespace ThreeDlib.Figures
 
         Public Property IsBorders() As Boolean
         Public Property IsFaces() As Boolean
-        Public Property Color() As Color
 
-        Sub New(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, clr As Color, isBorders As Boolean, isFaces As Boolean)
+        Sub New(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, clr As Color, 
+                isBorders As Boolean, isFaces As Boolean) 
+
+            MyBase.New(clr)
             Me.P1 = p1
             Me.P2 = p2
             Me.P3 = p3

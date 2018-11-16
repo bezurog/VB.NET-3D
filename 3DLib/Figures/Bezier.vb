@@ -16,7 +16,8 @@ Namespace ThreeDlib.Figures
         Friend Property P4() As Vector4
         Public Property Color() As Color
 
-        Sub New(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, color As Color) 
+        Sub New(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, color As Color)
+            MyBase.New(color)
             Me.P1 = p1
             Me.P2 = p2
             Me.P3 = p3

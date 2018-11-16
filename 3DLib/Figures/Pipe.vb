@@ -61,16 +61,6 @@ Namespace ThreeDlib.Figures
             End Set
         End Property
 
-        Dim color_ As Color
-        Public Property Color As Color
-            Get
-                Return color_
-            End Get
-            Private Set(value As Color)
-                color_ = value
-            End Set
-        End Property
-
         Dim isOxBasis_ As Boolean
         Friend Property IsOxBasis As Boolean
             Get
@@ -140,6 +130,8 @@ Namespace ThreeDlib.Figures
         #End Region
 
         Sub New(p1 As Vector4, p2 As Vector4, clr As Color, width As Double, vertexesCount As Integer, isBorders As Boolean)
+
+            MyBase.New(clr)
             Me.P1 = p1
             Me.P2 = p2
             Me.Color = clr

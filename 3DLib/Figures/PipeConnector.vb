@@ -1,5 +1,5 @@
-﻿Imports System.Drawing
-Imports OpenTK
+﻿Imports OpenTK
+Imports OpenTK.Graphics
 Imports OpenTK.Graphics.OpenGL
 
 Namespace ThreeDlib.Figures
@@ -35,6 +35,8 @@ Namespace ThreeDlib.Figures
         Public Property Radius() As Double
 
         Sub New(pipe1 As Pipe, pipe2 As Pipe, radius As Double) 
+
+            MyBase.New(Color4.Black)
             Me.Pipe1 = pipe1
             Me.Pipe2 = pipe2
             Me.Radius = radius
