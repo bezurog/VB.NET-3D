@@ -21,6 +21,13 @@ Namespace ThreeDlib.Figures
 
         Protected MustOverride Function Init() As Boolean
         Public MustOverride Sub Draw()
+
+        Public Overrides Function ToString() As String
+            Dim type As String = Me.GetType().ToString()
+            Dim dotInd As String = type.LastIndexOf(".")
+            Return type.Substring(dotInd + 1, type.Length - dotInd - 1)
+        End Function
+
     End Class
 
 End Namespace

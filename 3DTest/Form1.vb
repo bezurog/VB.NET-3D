@@ -98,10 +98,20 @@ Public Class Form1
                  New Vector4(-50, -50, 10, 1),
                  New Vector4(50, -50, 10, 1),
                  Color.IndianRed, True, False))
+
+        FillFiguresCombo()
+    End Sub
+
+    Private Sub FillFiguresCombo
+        ComboBox1.Items.Clear()
+        For Each f in figures
+            ComboBox1.Items.Add(f.ToString())
+        Next
     End Sub
 
     Private Sub GlControl1_Paint(sender As Object, e As PaintEventArgs) Handles GlControl1.Paint
         'Clear buffers
+        
 
         GL.Clear(ClearBufferMask.ColorBufferBit)
         GL.Clear(ClearBufferMask.DepthBufferBit)
@@ -235,4 +245,13 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim index As Integer = Me.ComboBox1.SelectedIndex
+        if index <> -1 Then
+            Dim r As Random = New Random(DateTime.Now.Millisecond)
+            Dim figure As Figure = figures(index)
+            figure.Color = Color.FromArgb(r.Next(256), r.Next(256), r.Next(256), r.Next(256))
+            GlControl1.Invalidate()
+        End If
+    End Sub
 End Class
