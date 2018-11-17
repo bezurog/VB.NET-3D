@@ -1,11 +1,8 @@
 ﻿Imports OpenTK
 Imports OpenTK.Graphics
 Imports OpenTK.Graphics.OpenGL
-Imports System.Drawing
-Imports System.Drawing.Imaging
 Imports ThreeDlib
 Imports ThreeDlib.Figures
-
 Public Class Form1
     Enum Orto
         OX
@@ -253,5 +250,10 @@ Public Class Form1
             figure.Color = Color.FromArgb(r.Next(256), r.Next(256), r.Next(256), r.Next(256))
             GlControl1.Invalidate()
         End If
+        
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        GlControl1.GrabScreenShot("myscr.png")
     End Sub
 End Class

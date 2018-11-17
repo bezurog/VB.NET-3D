@@ -24,6 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.GlControl1 = New OpenTK.GLControl()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.tbCameraZ = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.tbCameraY = New System.Windows.Forms.TextBox()
@@ -34,8 +36,7 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.SplitContainer1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainer1.Panel1.SuspendLayout
         Me.SplitContainer1.Panel2.SuspendLayout
@@ -54,6 +55,7 @@ Partial Class Form1
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.Button2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Button1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.ComboBox1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.tbCameraZ)
@@ -79,6 +81,24 @@ Partial Class Form1
         Me.GlControl1.Size = New System.Drawing.Size(674, 466)
         Me.GlControl1.TabIndex = 0
         Me.GlControl1.VSync = false
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(15, 236)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(143, 28)
+        Me.Button1.TabIndex = 11
+        Me.Button1.Text = "Сменить цвет"
+        Me.Button1.UseVisualStyleBackColor = true
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.FormattingEnabled = true
+        Me.ComboBox1.Location = New System.Drawing.Point(15, 194)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(143, 21)
+        Me.ComboBox1.TabIndex = 10
         '
         'tbCameraZ
         '
@@ -165,23 +185,14 @@ Partial Class Form1
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "dxy"
         '
-        'ComboBox1
+        'Button2
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FormattingEnabled = true
-        Me.ComboBox1.Location = New System.Drawing.Point(15, 194)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(143, 21)
-        Me.ComboBox1.TabIndex = 10
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(15, 236)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(143, 23)
-        Me.Button1.TabIndex = 11
-        Me.Button1.Text = "Сменить цвет"
-        Me.Button1.UseVisualStyleBackColor = true
+        Me.Button2.Location = New System.Drawing.Point(15, 282)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(143, 30)
+        Me.Button2.TabIndex = 12
+        Me.Button2.Text = "Скриншот"
+        Me.Button2.UseVisualStyleBackColor = true
         '
         'Form1
         '
@@ -215,4 +226,5 @@ End Sub
     Friend WithEvents Label4 As Label
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class
