@@ -96,13 +96,24 @@ Public Class Form1
                  New Vector4(50, -50, 10, 1),
                  Color.IndianRed, True, False))
 
+        FillFigureTypesCombo()
         FillFiguresCombo()
     End Sub
 
-    Private Sub FillFiguresCombo
+    Private Sub FillFigureTypesCombo
         ComboBox1.Items.Clear()
+
         For Each f in figures
-            ComboBox1.Items.Add(f.ToString())
+            Dim figureType As String = f.GetFigureType()
+            If Not ComboBox1.Items.Contains(figureType) Then ComboBox1.Items.Add(figureType)
+        Next
+
+    End Sub
+
+    Private Sub FillFiguresCombo
+        ComboBox2.Items.Clear()
+        For Each f in figures
+            ComboBox2.Items.Add(f.ToString())
         Next
     End Sub
 

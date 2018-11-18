@@ -24,6 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.GlControl1 = New OpenTK.GLControl()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.tbCameraZ = New System.Windows.Forms.TextBox()
@@ -36,7 +37,9 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         CType(Me.SplitContainer1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainer1.Panel1.SuspendLayout
         Me.SplitContainer1.Panel2.SuspendLayout
@@ -55,6 +58,9 @@ Partial Class Form1
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.Label7)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.ComboBox2)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.Label6)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Button2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Button1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.ComboBox1)
@@ -82,9 +88,18 @@ Partial Class Form1
         Me.GlControl1.TabIndex = 0
         Me.GlControl1.VSync = false
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(15, 424)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(143, 30)
+        Me.Button2.TabIndex = 12
+        Me.Button2.Text = "Скриншот"
+        Me.Button2.UseVisualStyleBackColor = true
+        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(15, 236)
+        Me.Button1.Location = New System.Drawing.Point(15, 390)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(143, 28)
         Me.Button1.TabIndex = 11
@@ -95,7 +110,7 @@ Partial Class Form1
         '
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = true
-        Me.ComboBox1.Location = New System.Drawing.Point(15, 194)
+        Me.ComboBox1.Location = New System.Drawing.Point(15, 205)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(143, 21)
         Me.ComboBox1.TabIndex = 10
@@ -185,14 +200,32 @@ Partial Class Form1
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "dxy"
         '
-        'Button2
+        'Label6
         '
-        Me.Button2.Location = New System.Drawing.Point(15, 282)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(143, 30)
-        Me.Button2.TabIndex = 12
-        Me.Button2.Text = "Скриншот"
-        Me.Button2.UseVisualStyleBackColor = true
+        Me.Label6.AutoSize = true
+        Me.Label6.Location = New System.Drawing.Point(12, 189)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(67, 13)
+        Me.Label6.TabIndex = 13
+        Me.Label6.Text = "Тип фигуры"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = true
+        Me.Label7.Location = New System.Drawing.Point(12, 242)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(46, 13)
+        Me.Label7.TabIndex = 15
+        Me.Label7.Text = "Фигура"
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox2.FormattingEnabled = true
+        Me.ComboBox2.Location = New System.Drawing.Point(15, 258)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(143, 21)
+        Me.ComboBox2.TabIndex = 14
         '
         'Form1
         '
@@ -227,4 +260,7 @@ End Sub
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents Label7 As Label
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents Label6 As Label
 End Class
