@@ -6,20 +6,17 @@ Namespace ThreeDlib.Figures
 
 
     Public Class Rect
-        Inherits Figure
+        Inherits BorderFaceFigure
 
         Public Property P1() As Vector4
         Public Property P2() As Vector4
         Public Property P3() As Vector4
         Public Property P4() As Vector4
 
-        Public Property IsBorders() As Boolean
-        Public Property IsFaces() As Boolean
-
         Sub New(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, clr As Color, 
                 isBorders As Boolean, isFaces As Boolean) 
 
-            MyBase.New(clr)
+            MyBase.New(clr, isBorders, isFaces)
             Me.P1 = p1
             Me.P2 = p2
             Me.P3 = p3

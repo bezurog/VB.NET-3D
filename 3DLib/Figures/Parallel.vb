@@ -5,7 +5,7 @@ Imports OpenTK.Graphics.OpenGL
 Namespace ThreeDlib.Figures
 
     Public Class Parallel
-        Inherits Figure 
+        Inherits BorderFaceFigure
 
         Public Property P1() As Vector4
         Public Property P2() As Vector4
@@ -16,14 +16,13 @@ Namespace ThreeDlib.Figures
         Public Property P7() As Vector4
         Public Property P8() As Vector4
 
-        Public Property IsBorders() As Boolean
-        Public Property IsFaces() As Boolean
+
 
         Sub New(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, 
                 p5 As Vector4, p6 As Vector4, p7 As Vector4, p8 As Vector4, clr As Color, 
                 isBorders As Boolean, isFaces As Boolean)
 
-            MyBase.New(clr)
+            MyBase.New(clr, isBorders, isFaces)
             Me.P1 = p1
             Me.P2 = p2
             Me.P3 = p3

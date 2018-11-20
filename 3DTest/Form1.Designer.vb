@@ -24,6 +24,9 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.GlControl1 = New OpenTK.GLControl()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
@@ -37,9 +40,8 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         CType(Me.SplitContainer1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainer1.Panel1.SuspendLayout
         Me.SplitContainer1.Panel2.SuspendLayout
@@ -58,6 +60,8 @@ Partial Class Form1
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox2)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label7)
         Me.SplitContainer1.Panel2.Controls.Add(Me.ComboBox2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label6)
@@ -87,6 +91,33 @@ Partial Class Form1
         Me.GlControl1.Size = New System.Drawing.Size(674, 466)
         Me.GlControl1.TabIndex = 0
         Me.GlControl1.VSync = false
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = true
+        Me.Label7.Location = New System.Drawing.Point(12, 242)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(46, 13)
+        Me.Label7.TabIndex = 15
+        Me.Label7.Text = "Фигура"
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox2.FormattingEnabled = true
+        Me.ComboBox2.Location = New System.Drawing.Point(15, 258)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(143, 21)
+        Me.ComboBox2.TabIndex = 14
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = true
+        Me.Label6.Location = New System.Drawing.Point(12, 189)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(67, 13)
+        Me.Label6.TabIndex = 13
+        Me.Label6.Text = "Тип фигуры"
         '
         'Button2
         '
@@ -200,32 +231,25 @@ Partial Class Form1
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "dxy"
         '
-        'Label6
+        'CheckBox1
         '
-        Me.Label6.AutoSize = true
-        Me.Label6.Location = New System.Drawing.Point(12, 189)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(67, 13)
-        Me.Label6.TabIndex = 13
-        Me.Label6.Text = "Тип фигуры"
+        Me.CheckBox1.AutoSize = true
+        Me.CheckBox1.Location = New System.Drawing.Point(15, 300)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(69, 17)
+        Me.CheckBox1.TabIndex = 16
+        Me.CheckBox1.Text = "isBorders"
+        Me.CheckBox1.UseVisualStyleBackColor = true
         '
-        'Label7
+        'CheckBox2
         '
-        Me.Label7.AutoSize = true
-        Me.Label7.Location = New System.Drawing.Point(12, 242)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(46, 13)
-        Me.Label7.TabIndex = 15
-        Me.Label7.Text = "Фигура"
-        '
-        'ComboBox2
-        '
-        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox2.FormattingEnabled = true
-        Me.ComboBox2.Location = New System.Drawing.Point(15, 258)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(143, 21)
-        Me.ComboBox2.TabIndex = 14
+        Me.CheckBox2.AutoSize = true
+        Me.CheckBox2.Location = New System.Drawing.Point(15, 332)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(62, 17)
+        Me.CheckBox2.TabIndex = 17
+        Me.CheckBox2.Text = "isFaces"
+        Me.CheckBox2.UseVisualStyleBackColor = true
         '
         'Form1
         '
@@ -263,4 +287,6 @@ End Sub
     Friend WithEvents Label7 As Label
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents Label6 As Label
+    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

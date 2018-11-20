@@ -41,6 +41,7 @@ Namespace ThreeDlib.Figures
             Me.Pipe2 = pipe2
             Me.Radius = radius
             isValid_ = Init()
+            Name = pipe1.Name + "_" + pipe2.Name
         End Sub
 
         Protected Overrides Function Init() As Boolean

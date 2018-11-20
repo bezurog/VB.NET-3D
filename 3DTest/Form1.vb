@@ -97,14 +97,14 @@ Public Class Form1
                  Color.IndianRed, True, False))
 
         FillFigureTypesCombo()
-        FillFiguresCombo()
+        'FillFiguresCombo()
     End Sub
 
     Private Sub FillFigureTypesCombo
         ComboBox1.Items.Clear()
 
         For Each f in figures
-            Dim figureType As String = f.GetFigureType()
+            Dim figureType As String = f.Type
             If Not ComboBox1.Items.Contains(figureType) Then ComboBox1.Items.Add(figureType)
         Next
 
@@ -113,7 +113,7 @@ Public Class Form1
     Private Sub FillFiguresCombo
         ComboBox2.Items.Clear()
         For Each f in figures
-            ComboBox2.Items.Add(f.ToString())
+            If f.Type = Me.ComboBox1.SelectedItem.ToString() Then ComboBox2.Items.Add(f.ToString())
         Next
     End Sub
 
@@ -254,10 +254,9 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim index As Integer = Me.ComboBox1.SelectedIndex
-        if index <> -1 Then
+        if ComboBox2.SelectedItem IsNot Nothing And ComboBox1.SelectedItem.ToString() <> "PipeConnector" Then
             Dim r As Random = New Random(DateTime.Now.Millisecond)
-            Dim figure As Figure = figures(index)
+            Dim figure As Figure = figures.FirstOrDefault(Function(f) f.Name = ComboBox2.SelectedItem.ToString())
             figure.Color = Color.FromArgb(r.Next(256), r.Next(256), r.Next(256), r.Next(256))
             GlControl1.Invalidate()
         End If
@@ -266,5 +265,35 @@ Public Class Form1
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         GlControl1.GrabScreenShot("myscr.png")
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        If Me.ComboBox1.SelectedItem IsNot Nothing Then FillFiguresCombo()
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+
+        If ComboBox2.SelectedItem Is Nothing Then Return
+
+        Dim figure As Figure = figures.FirstOrDefault(Function(f) f.Name = ComboBox2.SelectedItem.ToString())
+        If TypeOf figure Is BorderFaceFigure  Then
+            Dim bfFigure As BorderFaceFigure = DirectCast(figure, BorderFaceFigure)
+            bfFigure.IsBorders = CheckBox1.Checked
+        End If
+
+        GlControl1.Invalidate()
+    End Sub
+
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        If ComboBox2.SelectedItem Is Nothing Then Return
+
+        Dim figure As Figure = figures.FirstOrDefault(Function(f) f.Name = ComboBox2.SelectedItem.ToString())
+        If TypeOf figure Is BorderFaceFigure  Then
+            Dim bfFigure As BorderFaceFigure = DirectCast(figure, BorderFaceFigure)
+            bfFigure.IsFaces = CheckBox2.Checked
+        End If
+
+        GlControl1.Invalidate()
+
     End Sub
 End Class

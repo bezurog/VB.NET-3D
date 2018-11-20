@@ -78,6 +78,7 @@
     <Compile Include="Extensions.vb" />
     <Compile Include="FigureCreator.vb" />
     <Compile Include="Figures\Bezier.vb" />
+    <Compile Include="Figures\BorderFaceFigure.vb" />
     <Compile Include="Figures\Line.vb" />
     <Compile Include="Figures\Parallel.vb" />
     <Compile Include="Figures\PipeConnector.vb" />
