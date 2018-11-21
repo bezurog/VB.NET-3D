@@ -27,25 +27,28 @@ Namespace ThreeDlib
             Return connector
         End Function
 
-        Public Shared Function CreateLine(p1 As Vector4, p2 As Vector4, lineWidth As Integer, isStipple As Boolean, 
-                                          Optional Name As String = Nothing) As Line
-            Dim line As Line = New Line(p1, p2, lineWidth, isStipple, Name)
+        Public Shared Function CreateLine(p1 As Vector4, p2 As Vector4, isStipple As Boolean, 
+                                          Optional lineWidth As Double = 1, Optional Name As String = Nothing) As Line
+            Dim line As Line = New Line(p1, p2, isStipple, lineWidth, Name)
             If Not line.IsValid Then line = Nothing
             Return line
         End Function
 
         Public Shared Function CreateRect(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, clr As Color, 
-                                          isBorders As Boolean, isFaces As Boolean, Optional Name As String = Nothing) As Rect
-            Dim rect As Rect = New Rect(p1, p2, p3, p4, clr, isBorders, isFaces, Name)
+                                          isBorders As Boolean, isFaces As Boolean, 
+                                          Optional lineWidth As Double = 1, Optional Name As String = Nothing) As Rect
+            Dim rect As Rect = New Rect(p1, p2, p3, p4, clr, isBorders, isFaces, lineWidth, Name)
             If Not rect.IsValid Then rect = Nothing
             Return rect
         End Function
 
         Public Shared Function CreateParallel(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, 
                                               p5 As Vector4, p6 As Vector4, p7 As Vector4, p8 As Vector4, 
-                                              clr As Color, isBorders As Boolean, isFaces As Boolean, Optional Name As String = Nothing) As Parallel 
+                                              clr As Color, isBorders As Boolean, isFaces As Boolean,
+                                              Optional lineWidth As Double = 1,
+                                              Optional Name As String = Nothing) As Parallel 
 
-            Dim parallel As Parallel = New Parallel(p1, p2, p3, p4, p5, p6, p7, p8, clr, isBorders, isFaces, Name)
+            Dim parallel As Parallel = New Parallel(p1, p2, p3, p4, p5, p6, p7, p8, clr, isBorders, isFaces, lineWidth, Name)
             If Not parallel.IsValid Then parallel = Nothing
             Return parallel
         End Function

@@ -42,6 +42,9 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.tbLineWidth = New System.Windows.Forms.TextBox()
+        Me.blineWidth = New System.Windows.Forms.Button()
+        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.SplitContainer1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainer1.Panel1.SuspendLayout
         Me.SplitContainer1.Panel2.SuspendLayout
@@ -60,6 +63,9 @@ Partial Class Form1
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.Label8)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.blineWidth)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.tbLineWidth)
         Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.CheckBox1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label7)
@@ -143,7 +149,7 @@ Partial Class Form1
         '
         Me.Button2.Location = New System.Drawing.Point(15, 524)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(143, 30)
+        Me.Button2.Size = New System.Drawing.Size(145, 30)
         Me.Button2.TabIndex = 12
         Me.Button2.Text = "Скриншот"
         Me.Button2.UseVisualStyleBackColor = true
@@ -152,7 +158,7 @@ Partial Class Form1
         '
         Me.Button1.Location = New System.Drawing.Point(15, 490)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(143, 28)
+        Me.Button1.Size = New System.Drawing.Size(145, 28)
         Me.Button1.TabIndex = 11
         Me.Button1.Text = "Сменить цвет"
         Me.Button1.UseVisualStyleBackColor = true
@@ -251,6 +257,32 @@ Partial Class Form1
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "dxy"
         '
+        'tbLineWidth
+        '
+        Me.tbLineWidth.Location = New System.Drawing.Point(15, 388)
+        Me.tbLineWidth.Name = "tbLineWidth"
+        Me.tbLineWidth.Size = New System.Drawing.Size(64, 20)
+        Me.tbLineWidth.TabIndex = 18
+        Me.tbLineWidth.Text = "1"
+        '
+        'blineWidth
+        '
+        Me.blineWidth.Location = New System.Drawing.Point(85, 386)
+        Me.blineWidth.Name = "blineWidth"
+        Me.blineWidth.Size = New System.Drawing.Size(75, 23)
+        Me.blineWidth.TabIndex = 19
+        Me.blineWidth.Text = "Задать"
+        Me.blineWidth.UseVisualStyleBackColor = true
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = true
+        Me.Label8.Location = New System.Drawing.Point(12, 372)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(86, 13)
+        Me.Label8.TabIndex = 20
+        Me.Label8.Text = "Толщина линии"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -289,4 +321,7 @@ End Sub
     Friend WithEvents Label6 As Label
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents blineWidth As Button
+    Friend WithEvents tbLineWidth As TextBox
+    Friend WithEvents Label8 As Label
 End Class

@@ -5,18 +5,17 @@ Imports OpenTK.Graphics.OpenGL
 Namespace ThreeDlib.Figures
 
     Public Class Line
-        Inherits Figure
+        Inherits LineBasedFigure
 
-        Public Property LineWidth() As Integer
         Public Property P1() As Vector4
         Public Property P2() As Vector4
 
         Public Property IsStipple() As Boolean
 
-        Sub New(p1 As Vector4, p2 As Vector4, lineWidth As Integer, isStipple As Boolean, Optional Name As String = Nothing) 
+        Sub New(p1 As Vector4, p2 As Vector4, isStipple As Boolean, Optional lineWidth As Double = 1,
+                Optional Name As String = Nothing) 
 
-            MyBase.New(Color4.Black, Name)
-            Me.LineWidth = lineWidth 
+            MyBase.New(Color4.Black, lineWidth, Name)
             Me.P1 = p1
             Me.P2 = p2
             Me.IsStipple = isStipple

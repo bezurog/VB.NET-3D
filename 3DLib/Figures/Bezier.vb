@@ -5,7 +5,7 @@ Imports OpenTK.Graphics.OpenGL
 Namespace ThreeDlib.Figures
 
     Public Class Bezier
-        Inherits Figure
+        Inherits LineBasedFigure
 
         Dim vertexes_() As Vector4
         Dim vertexesCount_ As Integer
@@ -16,8 +16,9 @@ Namespace ThreeDlib.Figures
         Friend Property P4() As Vector4
         Public Property Color() As Color
 
-        Sub New(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, color As Color, Optional Name As String = Nothing)
-            MyBase.New(color, Name)
+        Sub New(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, color As Color, 
+                Optional lineWidth As Double = 1, Optional Name As String = Nothing)
+            MyBase.New(color, lineWidth, Name)
             Me.P1 = p1
             Me.P2 = p2
             Me.P3 = p3
@@ -45,12 +46,14 @@ Namespace ThreeDlib.Figures
         Public Overrides Sub Draw()
             If Not IsEnable Then Return
 
+            GL.LineWidth(LineWidth)
             GL.Begin(BeginMode.Points)
             GL.Color4(Me.Color)
             For i = 0 To vertexesCount_ - 1
                 GL.Vertex4(New Vector4(vertexes_(i)))
             Next i
             GL.End()
+            GL.LineWidth(1)
         End Sub
     End Class
 End Namespace

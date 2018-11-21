@@ -39,11 +39,11 @@ Public Class Form1
 
     Private Sub CreateFigures()
         figures = New List(Of Figure)
-        figures.Add(FigureCreator.CreateLine(New Vector4(-15, -15, 150, 1), New Vector4(-15, -15, 10, 1), 2, False, "Myline"))
-        figures.Add(FigureCreator.CreateLine(New Vector4(15, -15, 150, 1), New Vector4(15, -15, 10, 1), 2, False))
-        figures.Add(FigureCreator.CreateLine(New Vector4(15, 15, 10, 1), New Vector4(15, 15, 150, 1), 2, False))
-        figures.Add(FigureCreator.CreateLine(New Vector4(-15, 15, 10, 1), New Vector4(-15, 15, 150, 1), 2, False))
-        figures.Add(FigureCreator.CreateLine(New Vector4(0, 0, 10, 1), New Vector4(0, 0, 155, 1), 5, False))
+        figures.Add(FigureCreator.CreateLine(New Vector4(-15, -15, 150, 1), New Vector4(-15, -15, 10, 1), False, 1, "Myline"))
+        figures.Add(FigureCreator.CreateLine(New Vector4(15, -15, 150, 1), New Vector4(15, -15, 10, 1), False, 2))
+        figures.Add(FigureCreator.CreateLine(New Vector4(15, 15, 10, 1), New Vector4(15, 15, 150, 1), False, 2))
+        figures.Add(FigureCreator.CreateLine(New Vector4(-15, 15, 10, 1), New Vector4(-15, 15, 150, 1), False))
+        figures.Add(FigureCreator.CreateLine(New Vector4(0, 0, 10, 1), New Vector4(0, 0, 155, 1), False, 5))
         figures.Add(FigureCreator.CreatePipe(New Vector4(-40, 0, 80, 1), New Vector4(0, 0, 80, 1), Color.Green, 20, 8, True, "GreenPipe"))
         Dim pipe1 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 0, 155, 1), New Color4(0.2f, 0.8f, 0.5f, 0.3f), 5, 8, False)
         Dim pipe2 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, -120, 155, 1), Color.Magenta, 5, 8, False, "Magenta pipe")
@@ -57,17 +57,17 @@ Public Class Form1
         figures.Add(FigureCreator.CreatePipeConnector(pipe1, pipe2, 30))
         figures.Add(FigureCreator.CreatePipeConnector(pipe2, pipe3, 10))
         figures.Add(FigureCreator.CreatePipeConnector(pipe1, pipe4, 5))
-        figures.Add(FigureCreator.CreateLine(New Vector4(-40, -50, 10, 1), New Vector4(-40, 50, 10, 1), 1, True))
-        figures.Add(FigureCreator.CreateLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), 1, True, "stripple line"))
+        figures.Add(FigureCreator.CreateLine(New Vector4(-40, -50, 10, 1), New Vector4(-40, 50, 10, 1), True))
+        figures.Add(FigureCreator.CreateLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), True, 2, "stripple line"))
 
         figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 150, 1), New Vector4(15, -15, 150, 1), New Vector4(15, 15, 150, 1), 
-                                                     New Vector4(-15, 15, 150, 1), Color.Blue, True, False))
+                                                     New Vector4(-15, 15, 150, 1), Color.Blue, True, False, 4))
         figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 90, 1), New Vector4(15, -15, 90, 1), New Vector4(15, 15, 90, 1),
-                                                     New Vector4(-15, 15, 90, 1), New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True))
+                                                     New Vector4(-15, 15, 90, 1), New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True, 3))
         figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 90, 1), New Vector4(15, -15, 90, 1), New Vector4(15, 15, 90, 1),
                                                      New Vector4(-15, 15, 90, 1), New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True))
         figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 10, 1), New Vector4(15, -15, 10, 1), New Vector4(15, 15, 10, 1),
-                                                    New Vector4(-15, 15, 10, 1), Color.Blue, True, True, "blue rect"))
+                                                    New Vector4(-15, 15, 10, 1), Color.Blue, True, True, 1, "blue rect"))
         figures.Add(FigureCreator.CreateParallel(New Vector4(-25, -25, 40, 1),
                  New Vector4(25, -25, 40, 1),
                  New Vector4(-25, 25, 40, 1),
@@ -76,7 +76,7 @@ Public Class Form1
                  New Vector4(25, 25, 150, 1),
                  New Vector4(-25, -25, 150, 1),
                  New Vector4(25, -25, 150, 1),
-                 Color.HotPink, True, False))
+                 Color.HotPink, True, False, 4))
         figures.Add(FigureCreator.CreateParallel(New Vector4(-40, -40, 10, 1),
                  New Vector4(40, -40, 10, 1),
                  New Vector4(-40, 40, 10, 1),
@@ -85,7 +85,7 @@ Public Class Form1
                  New Vector4(40, 40, 40, 1),
                  New Vector4(-40, -40, 40, 1),
                  New Vector4(40, -40, 40, 1),
-                 Color.DarkGreen, True, True))
+                 Color.DarkGreen, True, True, 2))
         figures.Add(FigureCreator.CreateParallel(New Vector4(-50, -50, 0, 1),
                  New Vector4(50, -50, 0, 1),
                  New Vector4(-50, 50, 0, 1),
@@ -94,7 +94,7 @@ Public Class Form1
                  New Vector4(50, 50, 10, 1),
                  New Vector4(-50, -50, 10, 1),
                  New Vector4(50, -50, 10, 1),
-                 Color.IndianRed, True, False, "Base parallel"))
+                 Color.IndianRed, True, False, 3, "Base parallel"))
 
         FillFigureTypesCombo()
         'FillFiguresCombo()
@@ -300,10 +300,28 @@ Public Class Form1
         If ComboBox2.SelectedItem Is Nothing Then Return
 
         Dim figure As Figure = figures.FirstOrDefault(Function(f) f.Name = ComboBox2.SelectedItem.ToString())
+
+        If TypeOf figure Is LineBasedFigure  Then
+            Dim lbFigure As LineBasedFigure = DirectCast(figure, LineBasedFigure)
+            tbLineWidth.Text = lbFigure.LineWidth.ToString()
+        End If
+
         If TypeOf figure Is BorderFaceFigure  Then
             Dim bfFigure As BorderFaceFigure = DirectCast(figure, BorderFaceFigure)
             CheckBox1.Checked = bfFigure.IsBorders
             CheckBox2.Checked = bfFigure.IsFaces
+        End If
+
+    End Sub
+
+    Private Sub blineWidth_Click(sender As Object, e As EventArgs) Handles blineWidth.Click
+        If ComboBox2.SelectedItem Is Nothing Then Return
+
+        Dim figure As Figure = figures.FirstOrDefault(Function(f) f.Name = ComboBox2.SelectedItem.ToString())
+        If TypeOf figure Is LineBasedFigure  Then
+            Dim lbfFigure As LineBasedFigure = DirectCast(figure, LineBasedFigure)
+            lbfFigure.LineWidth = Double.Parse(tbLineWidth.Text)
+
             GlControl1.Invalidate()
         End If
     End Sub
