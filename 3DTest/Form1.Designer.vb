@@ -24,6 +24,8 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.GlControl1 = New OpenTK.GLControl()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -40,8 +42,6 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         CType(Me.SplitContainer1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SplitContainer1.Panel1.SuspendLayout
         Me.SplitContainer1.Panel2.SuspendLayout
@@ -78,7 +78,7 @@ Partial Class Form1
         Me.SplitContainer1.Panel2.Controls.Add(Me.TextBox1)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(864, 466)
+        Me.SplitContainer1.Size = New System.Drawing.Size(864, 566)
         Me.SplitContainer1.SplitterDistance = 674
         Me.SplitContainer1.TabIndex = 1
         '
@@ -88,9 +88,29 @@ Partial Class Form1
         Me.GlControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GlControl1.Location = New System.Drawing.Point(0, 0)
         Me.GlControl1.Name = "GlControl1"
-        Me.GlControl1.Size = New System.Drawing.Size(674, 466)
+        Me.GlControl1.Size = New System.Drawing.Size(674, 566)
         Me.GlControl1.TabIndex = 0
         Me.GlControl1.VSync = false
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = true
+        Me.CheckBox2.Location = New System.Drawing.Point(15, 332)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(62, 17)
+        Me.CheckBox2.TabIndex = 17
+        Me.CheckBox2.Text = "isFaces"
+        Me.CheckBox2.UseVisualStyleBackColor = true
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = true
+        Me.CheckBox1.Location = New System.Drawing.Point(15, 300)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(69, 17)
+        Me.CheckBox1.TabIndex = 16
+        Me.CheckBox1.Text = "isBorders"
+        Me.CheckBox1.UseVisualStyleBackColor = true
         '
         'Label7
         '
@@ -121,7 +141,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(15, 424)
+        Me.Button2.Location = New System.Drawing.Point(15, 524)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(143, 30)
         Me.Button2.TabIndex = 12
@@ -130,7 +150,7 @@ Partial Class Form1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(15, 390)
+        Me.Button1.Location = New System.Drawing.Point(15, 490)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(143, 28)
         Me.Button1.TabIndex = 11
@@ -231,31 +251,11 @@ Partial Class Form1
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "dxy"
         '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = true
-        Me.CheckBox1.Location = New System.Drawing.Point(15, 300)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(69, 17)
-        Me.CheckBox1.TabIndex = 16
-        Me.CheckBox1.Text = "isBorders"
-        Me.CheckBox1.UseVisualStyleBackColor = true
-        '
-        'CheckBox2
-        '
-        Me.CheckBox2.AutoSize = true
-        Me.CheckBox2.Location = New System.Drawing.Point(15, 332)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(62, 17)
-        Me.CheckBox2.TabIndex = 17
-        Me.CheckBox2.Text = "isFaces"
-        Me.CheckBox2.UseVisualStyleBackColor = true
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(864, 466)
+        Me.ClientSize = New System.Drawing.Size(864, 566)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Name = "Form1"
         Me.Text = "Form1"

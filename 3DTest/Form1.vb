@@ -39,14 +39,14 @@ Public Class Form1
 
     Private Sub CreateFigures()
         figures = New List(Of Figure)
-        figures.Add(FigureCreator.CreateLine(New Vector4(-15, -15, 150, 1), New Vector4(-15, -15, 10, 1), 2, False))
+        figures.Add(FigureCreator.CreateLine(New Vector4(-15, -15, 150, 1), New Vector4(-15, -15, 10, 1), 2, False, "Myline"))
         figures.Add(FigureCreator.CreateLine(New Vector4(15, -15, 150, 1), New Vector4(15, -15, 10, 1), 2, False))
         figures.Add(FigureCreator.CreateLine(New Vector4(15, 15, 10, 1), New Vector4(15, 15, 150, 1), 2, False))
         figures.Add(FigureCreator.CreateLine(New Vector4(-15, 15, 10, 1), New Vector4(-15, 15, 150, 1), 2, False))
         figures.Add(FigureCreator.CreateLine(New Vector4(0, 0, 10, 1), New Vector4(0, 0, 155, 1), 5, False))
-        figures.Add(FigureCreator.CreatePipe(New Vector4(-40, 0, 80, 1), New Vector4(0, 0, 80, 1), Color.Green, 20, 8, True))
+        figures.Add(FigureCreator.CreatePipe(New Vector4(-40, 0, 80, 1), New Vector4(0, 0, 80, 1), Color.Green, 20, 8, True, "GreenPipe"))
         Dim pipe1 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 0, 155, 1), New Color4(0.2f, 0.8f, 0.5f, 0.3f), 5, 8, False)
-        Dim pipe2 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, -120, 155, 1), Color.Magenta, 5, 8, False)
+        Dim pipe2 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, -120, 155, 1), Color.Magenta, 5, 8, False, "Magenta pipe")
         Dim pipe3 As Pipe = FigureCreator.CreatePipe(New Vector4(80, -120, 155, 1), New Vector4(0, -120, 155, 1), New Color4(1f, 0.5f, 0.5f, 0.5f), 5, 8, False)
         Dim pipe4 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 100, 0, 1), Color.Gray, 5, 8, False)
 
@@ -58,7 +58,7 @@ Public Class Form1
         figures.Add(FigureCreator.CreatePipeConnector(pipe2, pipe3, 10))
         figures.Add(FigureCreator.CreatePipeConnector(pipe1, pipe4, 5))
         figures.Add(FigureCreator.CreateLine(New Vector4(-40, -50, 10, 1), New Vector4(-40, 50, 10, 1), 1, True))
-        figures.Add(FigureCreator.CreateLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), 1, True))
+        figures.Add(FigureCreator.CreateLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), 1, True, "stripple line"))
 
         figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 150, 1), New Vector4(15, -15, 150, 1), New Vector4(15, 15, 150, 1), 
                                                      New Vector4(-15, 15, 150, 1), Color.Blue, True, False))
@@ -67,7 +67,7 @@ Public Class Form1
         figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 90, 1), New Vector4(15, -15, 90, 1), New Vector4(15, 15, 90, 1),
                                                      New Vector4(-15, 15, 90, 1), New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True))
         figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 10, 1), New Vector4(15, -15, 10, 1), New Vector4(15, 15, 10, 1),
-                                                    New Vector4(-15, 15, 10, 1), Color.Blue, True, True))
+                                                    New Vector4(-15, 15, 10, 1), Color.Blue, True, True, "blue rect"))
         figures.Add(FigureCreator.CreateParallel(New Vector4(-25, -25, 40, 1),
                  New Vector4(25, -25, 40, 1),
                  New Vector4(-25, 25, 40, 1),
@@ -94,7 +94,7 @@ Public Class Form1
                  New Vector4(50, 50, 10, 1),
                  New Vector4(-50, -50, 10, 1),
                  New Vector4(50, -50, 10, 1),
-                 Color.IndianRed, True, False))
+                 Color.IndianRed, True, False, "Base parallel"))
 
         FillFigureTypesCombo()
         'FillFiguresCombo()
@@ -279,9 +279,9 @@ Public Class Form1
         If TypeOf figure Is BorderFaceFigure  Then
             Dim bfFigure As BorderFaceFigure = DirectCast(figure, BorderFaceFigure)
             bfFigure.IsBorders = CheckBox1.Checked
-        End If
 
-        GlControl1.Invalidate()
+            GlControl1.Invalidate()
+        End If
     End Sub
 
     Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
@@ -291,9 +291,20 @@ Public Class Form1
         If TypeOf figure Is BorderFaceFigure  Then
             Dim bfFigure As BorderFaceFigure = DirectCast(figure, BorderFaceFigure)
             bfFigure.IsFaces = CheckBox2.Checked
+
+            GlControl1.Invalidate()
         End If
+    End Sub
 
-        GlControl1.Invalidate()
+    Private Sub ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+        If ComboBox2.SelectedItem Is Nothing Then Return
 
+        Dim figure As Figure = figures.FirstOrDefault(Function(f) f.Name = ComboBox2.SelectedItem.ToString())
+        If TypeOf figure Is BorderFaceFigure  Then
+            Dim bfFigure As BorderFaceFigure = DirectCast(figure, BorderFaceFigure)
+            CheckBox1.Checked = bfFigure.IsBorders
+            CheckBox2.Checked = bfFigure.IsFaces
+            GlControl1.Invalidate()
+        End If
     End Sub
 End Class

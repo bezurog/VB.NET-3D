@@ -14,9 +14,9 @@ Namespace ThreeDlib.Figures
         Public Property P4() As Vector4
 
         Sub New(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, clr As Color, 
-                isBorders As Boolean, isFaces As Boolean) 
+                isBorders As Boolean, isFaces As Boolean, Optional Name As String = Nothing) 
 
-            MyBase.New(clr, isBorders, isFaces)
+            MyBase.New(clr, isBorders, isFaces, Name)
             Me.P1 = p1
             Me.P2 = p2
             Me.P3 = p3

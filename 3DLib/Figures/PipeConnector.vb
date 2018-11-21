@@ -34,9 +34,9 @@ Namespace ThreeDlib.Figures
 
         Public Property Radius() As Double
 
-        Sub New(pipe1 As Pipe, pipe2 As Pipe, radius As Double) 
+        Sub New(pipe1 As Pipe, pipe2 As Pipe, radius As Double, Optional Name As String = Nothing) 
 
-            MyBase.New(Color4.Black)
+            MyBase.New(Color4.Black, Name)
             Me.Pipe1 = pipe1
             Me.Pipe2 = pipe2
             Me.Radius = radius

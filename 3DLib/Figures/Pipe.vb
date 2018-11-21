@@ -129,9 +129,10 @@ Namespace ThreeDlib.Figures
 
         #End Region
 
-        Sub New(p1 As Vector4, p2 As Vector4, clr As Color, width As Double, vertexesCount As Integer, isBorders As Boolean)
+        Sub New(p1 As Vector4, p2 As Vector4, clr As Color, width As Double, vertexesCount As Integer, 
+                isBorders As Boolean, Optional Name As String = Nothing)
 
-            MyBase.New(clr)
+            MyBase.New(clr, Name)
             Me.P1 = p1
             Me.P2 = p2
             Me.Color = clr

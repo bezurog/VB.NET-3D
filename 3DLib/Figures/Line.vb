@@ -13,9 +13,9 @@ Namespace ThreeDlib.Figures
 
         Public Property IsStipple() As Boolean
 
-        Sub New(p1 As Vector4, p2 As Vector4, lineWidth As Integer, isStipple As Boolean) 
+        Sub New(p1 As Vector4, p2 As Vector4, lineWidth As Integer, isStipple As Boolean, Optional Name As String = Nothing) 
 
-            MyBase.New(Color4.Black)
+            MyBase.New(Color4.Black, Name)
             Me.LineWidth = lineWidth 
             Me.P1 = p1
             Me.P2 = p2

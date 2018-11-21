@@ -17,11 +17,11 @@ Namespace ThreeDlib.Figures
             End Get
         End Property
 
-        Public Sub New(color As Color4)
+        Public Sub New(color As Color4, Optional Name As String = Nothing)
             Me.Color = color
             If NOT idCounters_.ContainsKey(Type) Then idCounters_.Add(Type, 0)
             idCounters_(Type) += 1
-            Me.Name = Me.Type + idCounters_(Type).ToString()
+            Me.Name = If(String.IsNullOrEmpty(Name), Me.Type + idCounters_(Type).ToString(), Name)
         End Sub
         
         Private type_ As String = GetFigureType()
