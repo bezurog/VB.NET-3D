@@ -104,7 +104,7 @@ Namespace ThreeDlib.Figures
                 GL.End()
 
                 GL.Begin(BeginMode.Quads)
-                GL.Color3(Color)
+                GL.Color4(Color)
                 GL.Vertex4(p2)
                 GL.Vertex4(p4)
                 GL.Vertex4(p6)
