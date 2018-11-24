@@ -4,7 +4,7 @@ Imports OpenTK.Graphics.OpenGL
 
 Namespace ThreeDlib.Figures
     Public Class Pipe
-        Inherits Figure
+        Inherits LineBasedFigure
 
         Const koefBend As Double = 2.5
         Private vertexCount_ As Integer
@@ -130,9 +130,9 @@ Namespace ThreeDlib.Figures
         #End Region
 
         Sub New(p1 As Vector4, p2 As Vector4, clr As Color, width As Double, vertexesCount As Integer, 
-                isBorders As Boolean, Optional Name As String = Nothing)
+                isBorders As Boolean, Optional lineWidth As Double = 1, Optional Name As String = Nothing)
 
-            MyBase.New(clr, Name)
+            MyBase.New(clr, lineWidth, Name)
             Me.P1 = p1
             Me.P2 = p2
             Me.Color = clr
@@ -211,11 +211,13 @@ Namespace ThreeDlib.Figures
 
             GL.Color4(Color.Black)
             If (isBorders_) Then
+                GL.LineWidth(Me.LineWidth)
                 GL.Begin(BeginMode.LineLoop)
                 For i = 0 To vertexCount_ - 1
                     GL.Vertex4(vertexes1_(i))
                 Next
                 GL.End()
+                GL.LineWidth(1)
             End If
             GL.Color4(Color)
 
@@ -227,11 +229,14 @@ Namespace ThreeDlib.Figures
 
             GL.Color4(Color.Black)
             If (isBorders_) Then
+                GL.LineWidth(Me.LineWidth)
                 GL.Begin(BeginMode.LineLoop)
+                
                 For i = 0 To vertexCount_ - 1
                     GL.Vertex4(vertexes2_(i))
                 Next
                 GL.End()
+                GL.LineWidth(1)
             End If
             GL.Color4(Color)
 

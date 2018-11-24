@@ -44,9 +44,9 @@ Public Class Form1
         figures.Add(FigureCreator.CreateLine(New Vector4(15, 15, 10, 1), New Vector4(15, 15, 150, 1), False, 2))
         figures.Add(FigureCreator.CreateLine(New Vector4(-15, 15, 10, 1), New Vector4(-15, 15, 150, 1), False))
         figures.Add(FigureCreator.CreateLine(New Vector4(0, 0, 10, 1), New Vector4(0, 0, 155, 1), False, 5))
-        figures.Add(FigureCreator.CreatePipe(New Vector4(-40, 0, 80, 1), New Vector4(0, 0, 80, 1), Color.Green, 20, 8, True, "GreenPipe"))
+        figures.Add(FigureCreator.CreatePipe(New Vector4(-40, 0, 80, 1), New Vector4(0, 0, 80, 1), Color.Green, 20, 8, True, 6, "GreenPipe"))
         Dim pipe1 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 0, 155, 1), New Color4(0.2f, 0.8f, 0.5f, 0.3f), 5, 8, False)
-        Dim pipe2 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, -120, 155, 1), Color.Magenta, 5, 8, False, "Magenta pipe")
+        Dim pipe2 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 155, 1), New Vector4(0, -120, 155, 1), Color.Magenta, 5, 8, False, 1, "Magenta pipe")
         Dim pipe3 As Pipe = FigureCreator.CreatePipe(New Vector4(80, -120, 155, 1), New Vector4(0, -120, 155, 1), New Color4(1f, 0.5f, 0.5f, 0.5f), 5, 8, False)
         Dim pipe4 As Pipe = FigureCreator.CreatePipe(New Vector4(0, 0, 0, 1), New Vector4(0, 100, 0, 1), Color.Gray, 5, 8, False)
 
@@ -254,6 +254,8 @@ Public Class Form1
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+                If ComboBox2.SelectedItem Is Nothing Then Return
+
         if ComboBox2.SelectedItem IsNot Nothing And ComboBox1.SelectedItem.ToString() <> "PipeConnector" Then
             Dim r As Random = New Random(DateTime.Now.Millisecond)
             Dim figure As Figure = figures.FirstOrDefault(Function(f) f.Name = ComboBox2.SelectedItem.ToString())

@@ -14,8 +14,8 @@ Namespace ThreeDlib
     'Create(p1 As Vector4, p2 As Vector4, clr As Color, width As Double, vertexesCount As Integer, isBorders As Boolean)
     Public Class FigureCreator
         Public Shared Function CreatePipe(p1 As Vector4, p2 As Vector4, clr As Color, width As Double, vertexesCount As Integer, 
-                                          isBorders As Boolean, Optional Name As String = Nothing) As Pipe
-            Dim pipe As Pipe = New Pipe(p1, p2, clr, width, vertexesCount, isBorders, Name)
+                                          isBorders As Boolean, Optional lineWidth As Double = 1, Optional Name As String = Nothing) As Pipe
+            Dim pipe As Pipe = New Pipe(p1, p2, clr, width, vertexesCount, isBorders, lineWidth, Name)
             If Not pipe.IsValid Then pipe = Nothing
             Return pipe
         End Function
