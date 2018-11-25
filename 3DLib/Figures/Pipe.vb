@@ -6,6 +6,7 @@ Namespace ThreeDlib.Figures
     Public Class Pipe
         Inherits LineBasedFigure
 
+        ''testtest
         Const koefBend As Double = 2.5
         Private vertexCount_ As Integer
         Private isBorders_ As Boolean
