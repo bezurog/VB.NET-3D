@@ -41,7 +41,13 @@ Namespace ThreeDlib
             If Not rect.IsValid Then rect = Nothing
             Return rect
         End Function
-
+        Public Shared Function CreateTrian(p1 As Vector4, p2 As Vector4, p3 As Vector4, clr As Color,
+                                         isBorders As Boolean, isFaces As Boolean,
+                                         Optional lineWidth As Double = 1, Optional Name As String = Nothing) As Trian
+            Dim trian As Trian = New Trian(p1, p2, p3, clr, isBorders, isFaces, lineWidth, Name)
+            If Not trian.IsValid Then trian = Nothing
+            Return trian
+        End Function
         Public Shared Function CreateParallel(p1 As Vector4, p2 As Vector4, p3 As Vector4, p4 As Vector4, 
                                               p5 As Vector4, p6 As Vector4, p7 As Vector4, p8 As Vector4, 
                                               clr As Color, isBorders As Boolean, isFaces As Boolean,

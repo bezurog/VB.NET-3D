@@ -60,14 +60,22 @@ Public Class Form1
         figures.Add(FigureCreator.CreateLine(New Vector4(-40, -50, 10, 1), New Vector4(-40, 50, 10, 1), True))
         figures.Add(FigureCreator.CreateLine(New Vector4(-50, -40, 10, 1), New Vector4(50, -40, 10, 1), True, 2, "stripple line"))
 
-        figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 150, 1), New Vector4(15, -15, 150, 1), New Vector4(15, 15, 150, 1), 
+        figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 150, 1), New Vector4(15, -15, 150, 1), New Vector4(15, 15, 150, 1),
                                                      New Vector4(-15, 15, 150, 1), Color.Blue, True, False, 4))
+
         figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 90, 1), New Vector4(15, -15, 90, 1), New Vector4(15, 15, 90, 1),
                                                      New Vector4(-15, 15, 90, 1), New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True, 3))
+
         figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 90, 1), New Vector4(15, -15, 90, 1), New Vector4(15, 15, 90, 1),
                                                      New Vector4(-15, 15, 90, 1), New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True))
+
+        figures.Add(FigureCreator.CreateTrian(New Vector4(-15, -15, 100, 1), New Vector4(15, -15, 110, 1), New Vector4(15, 15, 100, 1),
+                                              New Color4(1.0F, 1.0F, 1.0F, 1.0F), True, True))
+
+
         figures.Add(FigureCreator.CreateRect(New Vector4(-15, -15, 10, 1), New Vector4(15, -15, 10, 1), New Vector4(15, 15, 10, 1),
                                                     New Vector4(-15, 15, 10, 1), Color.Blue, True, True, 1, "blue rect"))
+
         figures.Add(FigureCreator.CreateParallel(New Vector4(-25, -25, 40, 1),
                  New Vector4(25, -25, 40, 1),
                  New Vector4(-25, 25, 40, 1),

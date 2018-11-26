@@ -9,7 +9,8 @@ Namespace ThreeDlib.Figures
         Public Property IsEnable() As Boolean = True
         Public Property Color() As Color4
         Public Property Name() As String
-        Private Shared idCounters_ As Dictionary(Of String, Integer) = New Dictionary(Of String, Integer) 
+        Public Property Ige() As String
+        Private Shared idCounters_ As Dictionary(Of String, Integer) = New Dictionary(Of String, Integer)
 
         Public ReadOnly Property IsValid As Boolean 
             Get
