@@ -275,7 +275,9 @@ Public Class Form1
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
-        GlControl1.GrabScreenShots("testscr.png")
+        GlControl1.GrabScreenShotToClipboard()
+        GlControl1.GrabScreenShotToFile()
+        GlControl1.GrabScreenShotToFile("test.png")
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
