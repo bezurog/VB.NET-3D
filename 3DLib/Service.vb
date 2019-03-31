@@ -4,6 +4,12 @@ Imports OpenTK.Graphics
 Imports OpenTK.Graphics.OpenGL
 
 Namespace ThreeDlib
+    Public Enum Orto 
+        OX
+        OY
+        OZ
+    End Enum
+             
 
     Public Class Service
         Public Shared Function Length(a As Vector4, b As Vector4) As Double
@@ -97,13 +103,13 @@ Namespace ThreeDlib
             Return list
         End Function
 
-        Public Shared Function IsEquals(p1 As Vector4, p2 As Vector4) As Boolean
-            Dim eps As Double = 0.0001
-            If Math.Abs(p1.X - p2.X) > eps Then Return False
-            If Math.Abs(p1.Y - p2.Y) > eps Then Return False
-            If Math.Abs(p1.Z - p2.Z) > eps Then Return False
-            Return True
-        End Function
+        'Public Shared Function IsEquals(p1 As Vector4, p2 As Vector4) As Boolean
+        '    Dim eps As Double = 0.0001
+        '    If Math.Abs(p1.X - p2.X) > eps Then Return False
+        '    If Math.Abs(p1.Y - p2.Y) > eps Then Return False
+        '    If Math.Abs(p1.Z - p2.Z) > eps Then Return False
+        '    Return True
+        'End Function
 
         Public Shared Function CycleIndex(ind As Int32, size As Int32, inc As Boolean)
             Dim resultInd As Int32 = ind
@@ -113,6 +119,40 @@ Namespace ThreeDlib
                 If resultInd = 0 Then resultInd = size - 1 Else resultInd = ind - 1
             End If
             Return resultInd
+        End Function
+
+        Public Shared Function IsEquals(p1 As Vector4, p2 As Vector4, orto As Orto) As Boolean
+            If orto = Orto.OX Then Return p1.X.ToString() = p2.X.ToString()
+            If orto = Orto.OY Then Return p1.Y.ToString() = p2.Y.ToString()
+            Return p1.Z.ToString() = p2.Z.ToString()
+        End Function
+
+        Public Shared Function IsNotEquals(p1 As Vector4, p2 As Vector4, orto As Orto) As Boolean
+            Return Not IsEquals(p1, p2, orto)
+        End Function
+
+        Public Shared Function IsEquals(p1 As Vector3, p2 As Vector3, orto As Orto) As Boolean
+            Return IsEquals(New Vector4(p1.X, p1.Y, p1.Z, 1), New Vector4(p2.X, p2.Y, p2.Z, 1), orto)
+        End Function
+
+        Public Shared Function IsNotEquals(p1 As Vector3, p2 As Vector3, orto As Orto) As Boolean
+            Return Not IsEquals(p1, p2, orto)
+        End Function
+        
+        Public Shared Function IsEquals(p1 As Vector4, p2 As Vector4) As Boolean
+            Return IsEquals(p1, p2, Orto.OX) And IsEquals(p1, p2, Orto.OY) And IsEquals(p1, p2, Orto.OZ)
+        End Function
+
+        Public Shared Function IsNotEquals(p1 As Vector4, p2 As Vector4) As Boolean
+            Return Not IsEquals(p1, p2)
+        End Function
+
+        Public Shared Function IsEquals(p1 As Vector3, p2 As Vector3) As Boolean
+            Return IsEquals(p1, p2, Orto.OX) And IsEquals(p1, p2, Orto.OY) And IsEquals(p1, p2, Orto.OZ)
+        End Function
+
+        Public Shared Function IsNotEquals(p1 As Vector3, p2 As Vector3) As Boolean
+            Return Not IsEquals(p1, p2)
         End Function
 
     End Class

@@ -47,7 +47,7 @@ Namespace ThreeDlib.Figures
         End Sub
 
         Protected Overrides Function Init() As Boolean
-            Return P1 <> P2
+            Return Service.IsNotEquals(P1, P2)
         End Function
     End Class
 End  Namespace

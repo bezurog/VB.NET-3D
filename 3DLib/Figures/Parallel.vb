@@ -138,9 +138,9 @@ Namespace ThreeDlib.Figures
             points(7) = p8
 
             Dim i, j As Integer
-            For i = 1 To 7
-                For j = i + 1 To 8
-                    If points(i) = points(j) Then Return False
+            For i = 0 To points.Length - 2
+                For j = i + 1 To points.Length - 1
+                    If Service.IsEquals(points(i), points(j)) Then Return False
                 Next j
             Next i
             Return True

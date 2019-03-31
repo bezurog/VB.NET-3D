@@ -116,7 +116,7 @@ Namespace ThreeDlib.Figures
                 Return P2 - P1
             End Get
         End Property
-        Public ReadOnly Property Orto As Vector3
+        Public ReadOnly Property Basis As Vector3
             Get
                 Dim i As Vector3 = New Vector3(1, 0, 0)
                 Dim j As Vector3 = New Vector3(0, 1, 0)
@@ -174,12 +174,16 @@ Namespace ThreeDlib.Figures
 
         Protected Overrides Function Init() As Boolean
             Dim i As Integer
-            If P1.X <> P2.X And P1.Y <> P2.Y Or P1.X <> P2.X And P1.Z <> P2.Z Or P1.Y <> P2.Y And P1.Z <> P2.Z Then Return False
+            If Service.IsNotEquals(P1, P2, Orto.OX) And Service.IsNotEquals(P1, P2, Orto.OY) Or 
+               Service.IsNotEquals(P1, P2, Orto.OX) And Service.IsNotEquals(P1, P2, Orto.OZ) Or 
+               Service.IsNotEquals(P1, P2, Orto.OY) And Service.IsNotEquals(P1, P2, Orto.OZ) Then
+                Return False
+            End If
 
-            If P1.X = P2.X And P1.Y = P2.Y Then
+            If Service.IsEquals(P1, P2, Orto.OX) And Service.IsEquals(P1, P2, Orto.OY) Then
                 basis_ = New Vector3(0, 0, 1)
                 isOzBasis_ = True
-            ElseIf P1.Y = P2.Y And P1.Z = P2.Z Then
+            ElseIf Service.IsEquals(P1, P2, Orto.OY) And Service.IsEquals(P1, P2, Orto.OZ) Then
                 basis_ = New Vector3(1, 0, 0)
                 isOxBasis_ = True
             Else

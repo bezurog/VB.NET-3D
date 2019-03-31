@@ -65,7 +65,8 @@ Namespace ThreeDlib.Figures
         End Property
 
         Protected Overrides Function Init() As Boolean
-            Return P1 <> P2 And P1 <> P3 And P1 <> P4 And P2 <> P3 And P2 <> P4 And P3 <> P4
+            Return Service.IsNotEquals(P1, P2) And Service.IsNotEquals(P1, P3) And Service.IsNotEquals(P1, P4) And
+                Service.IsNotEquals(P2, P3) And Service.IsNotEquals(P2, P4) And Service.IsNotEquals(P3, P4)
         End Function
     End Class
 

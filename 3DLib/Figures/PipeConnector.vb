@@ -46,32 +46,35 @@ Namespace ThreeDlib.Figures
 
         Protected Overrides Function Init() As Boolean
             If Pipe1 Is Nothing Or Pipe2 Is Nothing Then Return False
-            If Pipe1.Orto = Pipe2.Orto Then Return False
+            If Service.IsEquals(Pipe1.Basis, Pipe2.Basis) Then Return False
             If Pipe1.R <> Pipe2.R Then Return False
             If Pipe1.Vertexes1.Count <> Pipe2.Vertexes1.Count Then Return False
             If radius <= Pipe1.R Then Return False
-            If Pipe1.P1 <> Pipe2.P1 And Pipe1.P1 <> Pipe2.P2 And Pipe1.P2 <> Pipe2.P1 And Pipe1.P2 <> Pipe2.P2 Then Return False
+            If Service.IsNotEquals(Pipe1.P1, Pipe2.P1) And Service.IsNotEquals(Pipe1.P1, Pipe2.P2) And 
+               Service.IsNotEquals(Pipe1.P2, Pipe2.P1) And Service.IsNotEquals(Pipe1.P2, Pipe2.P2) Then
+                Return False
+            End If
 
             Dim beginCenterPoint As Vector4
             Dim endCenterPoint As Vector4
             Dim vertexes1 As Vector4() = pipe1.Vertexes1
             Dim vertexes2 As Vector4() = pipe2.Vertexes1
 
-            If pipe1.P1 = pipe2.P1 Then
+            If Service.IsEquals(pipe1.P1, pipe2.P1) Then
                 pipe1.Cut1(radius)
                 pipe2.Cut1(radius)
                 beginCenterPoint = pipe1.P1
                 endCenterPoint = pipe2.P1
                 vertexes1 = pipe1.Vertexes1
                 vertexes2 = pipe2.Vertexes1
-            ElseIf pipe1.P1 = pipe2.P2 Then
+            ElseIf Service.IsEquals(pipe1.P1, pipe2.P2) Then
                 pipe1.Cut1(radius)
                 pipe2.Cut2(radius)
                 beginCenterPoint = pipe1.P1
                 endCenterPoint = pipe2.P2
                 vertexes1 = pipe1.Vertexes1
                 vertexes2 = pipe2.Vertexes2
-            ElseIf pipe1.P2 = pipe2.P1 Then
+            ElseIf Service.IsEquals(pipe1.P2, pipe2.P1) Then
                 pipe1.Cut2(radius)
                 pipe2.Cut1(radius)
                 beginCenterPoint = pipe1.P2
@@ -87,10 +90,10 @@ Namespace ThreeDlib.Figures
                 vertexes2 = pipe2.Vertexes2
             End If
 
-            If beginCenterPoint = pipe1.P1 And pipe1.IsConnectedP1 Then Return False
-            If beginCenterPoint = pipe1.P2 And pipe1.IsConnectedP2 Then Return False
-            If endCenterPoint = pipe2.P1 And pipe2.IsConnectedP1 Then Return False
-            If endCenterPoint = pipe2.P2 And pipe2.IsConnectedP2 Then Return False
+            If Service.IsEquals(beginCenterPoint, pipe1.P1) And pipe1.IsConnectedP1 Then Return False
+            If Service.IsEquals(beginCenterPoint, pipe1.P2) And pipe1.IsConnectedP2 Then Return False
+            If Service.IsEquals(endCenterPoint, pipe2.P1) And pipe2.IsConnectedP1 Then Return False
+            If Service.IsEquals(endCenterPoint, pipe2.P2) And pipe2.IsConnectedP2 Then Return False
 
             Dim len1 As Double = (endCenterPoint - beginCenterPoint).Length
             Dim minLen As Double = (vertexes1(0) - vertexes2(0)).Length 'Service.Length(vertexes1(0), vertexes2(0))
@@ -115,7 +118,7 @@ Namespace ThreeDlib.Figures
             Dim lenNext3 As Double = (nextVertex3 - nextVertex1).Length
             Dim isInc As Boolean = lenNext2 < lenNext3
 
-            Dim pipe12Orto As Vector3 = pipe1.Orto + pipe2.Orto
+            Dim pipe12Orto As Vector3 = pipe1.Basis + pipe2.Basis
             Dim e As Vector3 = New Vector3(1, 1, 1)
             Dim normal As Vector3
 
@@ -127,17 +130,18 @@ Namespace ThreeDlib.Figures
                 normal = New Vector3(1, 0, 0)
             End If
 
-            Dim delta11 As Vector3 = (e - pipe1.Orto - normal) * radius
-            Dim delta12 As Vector3 = (e - pipe1.Orto - normal) * (-radius)
-            Dim delta21 As Vector3 = (e - pipe2.Orto - normal) * radius
-            Dim delta22 As Vector3 = (e - pipe2.Orto - normal) * (-radius)
+            Dim delta11 As Vector3 = (e - pipe1.Basis - normal) * radius
+            Dim delta12 As Vector3 = (e - pipe1.Basis - normal) * (-radius)
+            Dim delta21 As Vector3 = (e - pipe2.Basis - normal) * radius
+            Dim delta22 As Vector3 = (e - pipe2.Basis - normal) * (-radius)
 
             Dim candidate11 As Vector4 = beginCenterPoint + New Vector4(delta11.X, delta11.Y, delta11.Z, 1)
             Dim candidate12 As Vector4 = beginCenterPoint + New Vector4(delta12.X, delta12.Y, delta12.Z, 1)
             Dim candidate21 As Vector4 = endCenterPoint + New Vector4(delta21.X, delta21.Y, delta21.Z, 1)
             Dim candidate22 As Vector4 = endCenterPoint + New Vector4(delta22.X, delta22.Y, delta22.Z, 1)
 
-            Dim centerPoint As Vector4 = If(candidate11 = candidate21 Or candidate11 = candidate22, candidate11, candidate12)
+            Dim centerPoint As Vector4 = If(Service.IsEquals(candidate11, candidate21) Or Service.IsEquals(candidate11, candidate22), 
+                candidate11, candidate12)
 
             ReDim curvePoints(vertexes1.Count() - 1)
             Dim centerCurve As Vector4
