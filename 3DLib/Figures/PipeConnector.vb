@@ -46,12 +46,12 @@ Namespace ThreeDlib.Figures
 
         Protected Overrides Function Init() As Boolean
             If Pipe1 Is Nothing Or Pipe2 Is Nothing Then Return False
-            If Service.IsEquals(Pipe1.Basis, Pipe2.Basis) Then Return False
+            If Pipe1.Basis.IsEquals(Pipe2.Basis) Then Return False
             If Pipe1.R <> Pipe2.R Then Return False
             If Pipe1.Vertexes1.Count <> Pipe2.Vertexes1.Count Then Return False
             If radius <= Pipe1.R Then Return False
-            If Service.IsNotEquals(Pipe1.P1, Pipe2.P1) And Service.IsNotEquals(Pipe1.P1, Pipe2.P2) And 
-               Service.IsNotEquals(Pipe1.P2, Pipe2.P1) And Service.IsNotEquals(Pipe1.P2, Pipe2.P2) Then
+            If Pipe1.P1.IsNotEquals(Pipe2.P1) And Pipe1.P1.IsNotEquals(Pipe2.P2) And 
+               Pipe1.P2.IsNotEquals(Pipe2.P1) And Pipe1.P2.IsNotEquals(Pipe2.P2) Then
                 Return False
             End If
 
@@ -60,21 +60,21 @@ Namespace ThreeDlib.Figures
             Dim vertexes1 As Vector4() = pipe1.Vertexes1
             Dim vertexes2 As Vector4() = pipe2.Vertexes1
 
-            If Service.IsEquals(pipe1.P1, pipe2.P1) Then
+            If pipe1.P1.IsEquals(pipe2.P1) Then
                 pipe1.Cut1(radius)
                 pipe2.Cut1(radius)
                 beginCenterPoint = pipe1.P1
                 endCenterPoint = pipe2.P1
                 vertexes1 = pipe1.Vertexes1
                 vertexes2 = pipe2.Vertexes1
-            ElseIf Service.IsEquals(pipe1.P1, pipe2.P2) Then
+            ElseIf pipe1.P1.IsEquals(pipe2.P2) Then
                 pipe1.Cut1(radius)
                 pipe2.Cut2(radius)
                 beginCenterPoint = pipe1.P1
                 endCenterPoint = pipe2.P2
                 vertexes1 = pipe1.Vertexes1
                 vertexes2 = pipe2.Vertexes2
-            ElseIf Service.IsEquals(pipe1.P2, pipe2.P1) Then
+            ElseIf pipe1.P2.IsEquals(pipe2.P1) Then
                 pipe1.Cut2(radius)
                 pipe2.Cut1(radius)
                 beginCenterPoint = pipe1.P2
@@ -90,10 +90,10 @@ Namespace ThreeDlib.Figures
                 vertexes2 = pipe2.Vertexes2
             End If
 
-            If Service.IsEquals(beginCenterPoint, pipe1.P1) And pipe1.IsConnectedP1 Then Return False
-            If Service.IsEquals(beginCenterPoint, pipe1.P2) And pipe1.IsConnectedP2 Then Return False
-            If Service.IsEquals(endCenterPoint, pipe2.P1) And pipe2.IsConnectedP1 Then Return False
-            If Service.IsEquals(endCenterPoint, pipe2.P2) And pipe2.IsConnectedP2 Then Return False
+            If beginCenterPoint.IsEquals(pipe1.P1) And pipe1.IsConnectedP1 Then Return False
+            If beginCenterPoint.IsEquals(pipe1.P2) And pipe1.IsConnectedP2 Then Return False
+            If endCenterPoint.IsEquals(pipe2.P1) And pipe2.IsConnectedP1 Then Return False
+            If endCenterPoint.IsEquals(pipe2.P2) And pipe2.IsConnectedP2 Then Return False
 
             Dim len1 As Double = (endCenterPoint - beginCenterPoint).Length
             Dim minLen As Double = (vertexes1(0) - vertexes2(0)).Length 'Service.Length(vertexes1(0), vertexes2(0))
@@ -140,7 +140,7 @@ Namespace ThreeDlib.Figures
             Dim candidate21 As Vector4 = endCenterPoint + New Vector4(delta21.X, delta21.Y, delta21.Z, 1)
             Dim candidate22 As Vector4 = endCenterPoint + New Vector4(delta22.X, delta22.Y, delta22.Z, 1)
 
-            Dim centerPoint As Vector4 = If(Service.IsEquals(candidate11, candidate21) Or Service.IsEquals(candidate11, candidate22), 
+            Dim centerPoint As Vector4 = If(candidate11.IsEquals(candidate21) Or candidate11.IsEquals(candidate22), 
                 candidate11, candidate12)
 
             ReDim curvePoints(vertexes1.Count() - 1)
@@ -169,7 +169,7 @@ Namespace ThreeDlib.Figures
 
             startPipe_ = pipe1
             endPipe_ = pipe2
-            If Service.IsEquals(vertexes2(endIndex), curvePoints(0)(0)) Then
+            If vertexes2(endIndex).IsEquals(curvePoints(0)(0)) Then
                 startPipe_ = pipe2
                 endPipe_ = pipe1
             End If

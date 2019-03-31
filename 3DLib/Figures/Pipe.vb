@@ -174,16 +174,16 @@ Namespace ThreeDlib.Figures
 
         Protected Overrides Function Init() As Boolean
             Dim i As Integer
-            If Service.IsNotEquals(P1, P2, Orto.OX) And Service.IsNotEquals(P1, P2, Orto.OY) Or 
-               Service.IsNotEquals(P1, P2, Orto.OX) And Service.IsNotEquals(P1, P2, Orto.OZ) Or 
-               Service.IsNotEquals(P1, P2, Orto.OY) And Service.IsNotEquals(P1, P2, Orto.OZ) Then
+            If P1.IsNotEquals(P2, Orto.OX) And P1.IsNotEquals(P2, Orto.OY) Or 
+               P1.IsNotEquals(P2, Orto.OX) And P1.IsNotEquals(P2, Orto.OZ) Or 
+               P1.IsNotEquals(P2, Orto.OY) And P1.IsNotEquals(P2, Orto.OZ) Then
                 Return False
             End If
 
-            If Service.IsEquals(P1, P2, Orto.OX) And Service.IsEquals(P1, P2, Orto.OY) Then
+            If P1.IsEquals(P2, Orto.OX) And P1.IsEquals(P2, Orto.OY) Then
                 basis_ = New Vector3(0, 0, 1)
                 isOzBasis_ = True
-            ElseIf Service.IsEquals(P1, P2, Orto.OY) And Service.IsEquals(P1, P2, Orto.OZ) Then
+            ElseIf P1.IsEquals(P2, Orto.OY) And P1.IsEquals(P2, Orto.OZ) Then
                 basis_ = New Vector3(1, 0, 0)
                 isOxBasis_ = True
             Else

@@ -140,7 +140,7 @@ Namespace ThreeDlib.Figures
             Dim i, j As Integer
             For i = 0 To points.Length - 2
                 For j = i + 1 To points.Length - 1
-                    If Service.IsEquals(points(i), points(j)) Then Return False
+                    If points(i).IsEquals(points(j)) Then Return False
                 Next j
             Next i
             Return True
